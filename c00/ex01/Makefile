@@ -1,6 +1,12 @@
-NAME	= megaphone
+NAME	= phonebook
 
-SRCS	= megaphone.cpp
+SRCS	= contact.cpp
+SRCS	+= main.cpp
+SRCS	+= phonebook.cpp
+
+INC		= contact.hpp
+INC		+= phonebook.hpp
+
 OBJ		= $(SRCS:.cpp=.o)
 
 CC		= clang++
@@ -11,7 +17,7 @@ RM_DIR	= rm -rf
 all:
 	$(MAKE) $(NAME) --no-print-directory
 
-$(NAME):$(OBJ)
+$(NAME):$(OBJ) $(INC)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:
