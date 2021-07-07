@@ -10,9 +10,11 @@ public :
 	contact(void);
 	~contact(void);
 
+	std::string	get_field(size_t i);
+	void		set_field(size_t i);
+
 private :
 
-	std::string	_field_name[5];
 	std::string	_field[5];
 
 };

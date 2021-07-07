@@ -1,14 +1,26 @@
-# include "contact.hpp"
+#include <iostream>
+#include "contact.hpp"
 
 contact::contact(void){
 
-	std::cout << "Contact constructor called" << std::endl;
-	this->_field_name = 0; //trouves un moyen d initialiser une constante
 	return ;
 }
 
-phonebook::~phonebook(void){
+contact::~contact(void){
 
-	std::cout << "Contact destructor called" << std::endl;
+	for (size_t i = 0; i < 5; i++)
+		this->_field[i] = "";
+	return ;
+}
+
+
+std::string	contact::get_field(size_t i){
+
+	return (this->_field[i]);
+}
+
+void	contact::set_field(size_t i){
+
+	std::cin >> this->_field[i];
 	return ;
 }
