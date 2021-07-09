@@ -64,7 +64,8 @@ void	phonebook::print(void){
 				std::cout << str.at(j);
 			std::cout << ".";
 		}
-		std::cout << "|";
+		if (i < 3)
+			std::cout << "|";
 	}
 	std::cout << std::endl;
 
@@ -87,7 +88,8 @@ void	phonebook::print(void){
 					std::cout << str.at(k);
 				std::cout << ".";
 			}
-			std::cout << "|";
+			if (j < 3)
+				std::cout << "|";
 		}
 		std::cout << std::endl;
 	}
@@ -100,15 +102,15 @@ void	phonebook::search(void){
 
 	std::string	str;
 	
-	std::cout << std::endl << "Type index for details : ";
-	std::cin >> str;
+	std::cout << std::endl << "Type a valid index number for details : ";
+	std::getline(std::cin, str);
 	std::cout << std::endl;
 
 	while (str.size() > 1 || str.at(0) < '1' || str.at(0) > (this->_assigned_number + '0'))
 	{
 		std::cerr << "Error:Invalid index" << std::endl;
-		std::cout << std::endl << "Please enter a valid index : ";
-		std::cin >>	str;
+		std::cout << std::endl << "Please type a valid index : ";
+		std::getline(std::cin, str);
 		std::cout << std::endl;
 	}
 

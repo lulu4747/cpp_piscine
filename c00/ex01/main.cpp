@@ -6,7 +6,7 @@ int	main(void){
 	phonebook	phone;
 	std::string input;
 
-	std::cin >> input;
+	std::getline(std::cin, input);
 	while (input.compare("EXIT"))
 	{
 		if (!(input.compare("ADD")))
@@ -17,7 +17,7 @@ int	main(void){
 			else
 				phone.search();
 		}
-		std::cin >> input;
+		std::getline(std::cin, input);
 	}
 	return (0);
 }

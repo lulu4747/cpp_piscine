@@ -21,6 +21,6 @@ std::string	contact::get_field(size_t i){
 
 void	contact::set_field(size_t i){
 
-	std::cin >> this->_field[i];
+	std::getline(std::cin, this->_field[i]);
 	return ;
 }
