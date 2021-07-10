@@ -3,6 +3,7 @@
 
 Zombie::Zombie(void){
 
+	this->setName("");
 	return ;
 }
 

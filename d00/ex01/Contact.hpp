@@ -3,12 +3,12 @@
 
 # include <string>
 
-class	contact {
+class	Contact {
 
 public :
 
-	contact(void);
-	~contact(void);
+	Contact(void);
+	~Contact(void);
 
 	std::string	get_field(size_t i);
 	void		set_field(size_t i);

@@ -1,11 +1,6 @@
-NAME	= phonebook
+NAME	= brain
 
-SRCS	= Contact.cpp
-SRCS	+= main.cpp
-SRCS	+= Phonebook.cpp
-
-INC		= contact.hpp
-INC		+= phonebook.hpp
+SRCS	= main.cpp
 
 OBJ		= $(SRCS:.cpp=.o)
 
@@ -17,7 +12,7 @@ RM_DIR	= rm -rf
 all:
 	$(MAKE) $(NAME) --no-print-directory
 
-$(NAME):$(OBJ) $(INC)
+$(NAME):$(OBJ)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:

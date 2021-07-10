@@ -1,12 +1,12 @@
 #include <iostream>
 #include "Contact.hpp"
 
-contact::contact(void){
+Contact::Contact(void){
 
 	return ;
 }
 
-contact::~contact(void){
+Contact::~Contact(void){
 
 	for (size_t i = 0; i < 5; i++)
 		this->_field[i] = "";
@@ -14,12 +14,12 @@ contact::~contact(void){
 }
 
 
-std::string	contact::get_field(size_t i){
+std::string	Contact::get_field(size_t i){
 
 	return (this->_field[i]);
 }
 
-void	contact::set_field(size_t i){
+void	Contact::set_field(size_t i){
 
 	std::getline(std::cin, this->_field[i]);
 	return ;

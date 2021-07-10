@@ -2,24 +2,24 @@
 #include <iomanip>
 #include "Phonebook.hpp"
 
-phonebook::phonebook(void){
+Phonebook::Phonebook(void){
 
 	this->_assigned_number = 0;
 	this->_oldest = 0;
 	return ;
 }
 
-phonebook::~phonebook(void){
+Phonebook::~Phonebook(void){
 
 	return ;
 }
 
-int	phonebook::get_assigned_number(void){
+int	Phonebook::get_assigned_number(void){
 
 	return (this->_assigned_number);
 }
 
-void	phonebook::add(void){
+void	Phonebook::add(void){
 
 	size_t		n;
 
@@ -45,7 +45,7 @@ void	phonebook::add(void){
 	return ;
 }
 
-void	phonebook::print(void){
+void	Phonebook::print(void){
 
 	std::string	str;
 
@@ -96,7 +96,7 @@ void	phonebook::print(void){
 	return ;
 }
 
-void	phonebook::search(void){
+void	Phonebook::search(void){
 
 	this->print();
 

@@ -25,5 +25,8 @@ fclean:
 	$(RM_DIR) $(OBJ)
 	$(RM) $(NAME)
 
+re:
+	$(MAKE) fclean --no-print-directory
+	$(MAKE) all --no-print-directory
 
-.PHONY:all clean fclean
+.PHONY:all clean fclean re

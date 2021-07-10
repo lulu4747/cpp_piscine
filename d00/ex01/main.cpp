@@ -3,7 +3,7 @@
 
 int	main(void){
 
-	phonebook	phone;
+	Phonebook	phone;
 	std::string input;
 
 	std::getline(std::cin, input);

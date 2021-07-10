@@ -3,12 +3,12 @@
 
 # include "Contact.hpp"
 
-class	phonebook {
+class	Phonebook {
 
 public :
 
-	phonebook(void);
-	~phonebook(void);
+	Phonebook(void);
+	~Phonebook(void);
 
 	void		add(void);
 	void		search(void);
@@ -19,7 +19,7 @@ private :
 
 	void		print(void);
 
-	contact		_contact[8];
+	Contact		_contact[8];
 	size_t		_assigned_number;
 	size_t		_oldest;
 
