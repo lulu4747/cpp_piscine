@@ -1,11 +1,10 @@
-NAME	= phonebook
+NAME	= test
 
-SRCS	= contact.cpp
-SRCS	+= main.cpp
-SRCS	+= phonebook.cpp
+SRCS	= main.cpp
+SRCS	+= Zombie.cpp
+SRCS	+= ZombieHorde.cpp
 
-INC		= contact.hpp
-INC		+= phonebook.hpp
+INC		= Zombie.hpp
 
 OBJ		= $(SRCS:.cpp=.o)
 
