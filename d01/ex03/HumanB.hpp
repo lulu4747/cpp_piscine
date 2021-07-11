@@ -12,7 +12,7 @@ public :
 	~HumanB(void);
 
 	void		attack(void) const;
-	void		setWeapon(Weapon weapon);
+	void		setWeapon(Weapon& weapon);
 	std::string	getName(void) const;
 	std::string	getWeaponType(void) const;
 

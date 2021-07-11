@@ -19,6 +19,9 @@ RM_DIR	= rm -rf
 all:
 	$(MAKE) $(NAME) --no-print-directory
 
+%.o:%.cpp $(INC)
+	$(CC) $(CFLAGS) -c $< -o $@
+
 $(NAME):$(OBJ) $(INC)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
