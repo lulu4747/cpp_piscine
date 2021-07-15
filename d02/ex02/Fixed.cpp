@@ -91,18 +91,12 @@ Fixed	Fixed::operator-(Fixed const & rhs) const{
 
 Fixed	Fixed::operator*(Fixed const & rhs) const{
 
-	Fixed	copy = Fixed(*this);
-
-	copy._rawbits = this->_rawbits * rhs.getRawBits();
-	return copy;
+	return Fixed(this->toFloat() * rhs.toFloat());
 }
 
 Fixed	Fixed::operator/(Fixed const & rhs) const{
 
-	Fixed	copy = Fixed(*this);
-
-	copy._rawbits = this->_rawbits / rhs.getRawBits();
-	return copy;
+	return Fixed(this->toFloat() / rhs.toFloat());
 }
 
 Fixed &	Fixed::operator++(){
