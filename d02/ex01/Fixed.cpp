@@ -10,14 +10,14 @@ Fixed::Fixed(void):_rawbits(0){
 
 Fixed::Fixed(const int n){
 
-	this->_rawbits = n * (1 << this->_fracbits);
+	this->_rawbits = n << Fixed::_fracbits;
 	std::cout << "Int constructor called" << std::endl;
 	return ;
 }
 
 Fixed::Fixed(const float n){
 
-	this->_rawbits = n * (1 << this->_fracbits);
+	this->_rawbits = roundf(n * (1 << Fixed::_fracbits));
 	std::cout << "Float constructor called" << std::endl;
 	return ;
 }
@@ -51,12 +51,12 @@ int	Fixed::getRawBits(void) const{
 
 float	Fixed::toFloat(void) const{
 
-	return roundf(this->_rawbits) / (1 << this->_fracbits);
+	return ((float)(this->_rawbits) / (1 << Fixed::_fracbits));
 }
 
 int	Fixed::toInt(void) const{
 
-	return this->_rawbits >> this->_fracbits;
+	return this->_rawbits >> Fixed::_fracbits;
 }
 
 void	Fixed::setRawBits(int const raw){
