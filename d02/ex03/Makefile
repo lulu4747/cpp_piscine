@@ -1,9 +1,12 @@
-NAME	= Fixed
+NAME	= bsp
 
-SRCS	= Fixed.cpp
+SRCS	= bsp.cpp
+SRCS	+= Fixed.cpp
 SRCS	+= main.cpp
+SRCS	+= Point.cpp
 
 INC		= Fixed.hpp
+INC		+= Point.hpp
 
 OBJ		= $(SRCS:.cpp=.o)
 
