@@ -16,7 +16,7 @@ public:
 	int			getRawBits(void) const;
 	float		toFloat(void) const;
 	int			toInt(void) const;
-	void		setRawwBits(int const raw);
+	void		setRawBits(int const raw);
 
 private:
 
@@ -24,5 +24,7 @@ private:
 	static const int	_fracbits = 8;
 
 };
+
+std::ostream &	operator<<(std::ostream & o, Fixed const & rhs);
 
 #endif

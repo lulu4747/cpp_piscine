@@ -12,7 +12,7 @@ public:
 	Fixed &		operator=(Fixed const & rhs);
 
 	int			getRawBits(void) const;
-	void		setRawwBits(int const raw);
+	void		setRawBits(int const raw);
 
 private:
 
