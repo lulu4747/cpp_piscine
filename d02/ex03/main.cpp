@@ -6,21 +6,11 @@ bool	bsp( Point const a, Point const b, Point const c, Point const point);
 
 int main( void ) {
 
-	Point	pts[4];
-	char	abcn[5] = "abcn";
-	float	x;
-	float	y;
-
-	for (size_t i = 0; i < 4; i++)
-	{
-		std::cout << "Coordonate for " << abcn[i] << " point as float: " << std::endl << "x = ";
-		std::cin >> x;
-		std::cin.get();
-		std::cout << "y = ";
-		std::cin >> y;
-		std::cin.get();
-		pts[i] = Point(Fixed(x), Fixed(y));
-	}
-	std::cout << std::boolalpha << "bsp return is : " << bsp(pts[0], pts[1], pts[2], pts[3]) << std::endl;
+	std::cout << std::boolalpha << "bsp return for : " << std::endl
+		<< "a(0, 0), b(0, 5), c(5. 0), point(1, 1): " << bsp(Point(0, 0), Point(0, 5), Point(5, 0), Point(1, 1)) << std::endl
+		<< "a(0, 0), b(0, 5), c(5. 0), point(0, 5): " << bsp(Point(0, 0), Point(0, 5), Point(5, 0), Point(0, 5)) << std::endl
+		<< "a(0, 0), b(0, 5), c(5. 0), point(0, 3): " << bsp(Point(0, 0), Point(0, 5), Point(5, 0), Point(0, 3)) << std::endl
+		<< "a(0, 0), b(0, 5), c(5. 0), point(0, 0): " << bsp(Point(0, 0), Point(0, 5), Point(5, 0), Point(0, 0)) << std::endl
+		<< "a(0, 0), b(0, 5), c(5. 0), point(0.1, 0.01): " << bsp(Point(0, 0), Point(0, 5), Point(5, 0), Point(0.1, 0.01)) << std::endl;
 	return 0;
 }
