@@ -11,7 +11,7 @@ Point::~Point(void){
 	return ;
 }
 
-Point::Point(Point const & src){
+Point::Point(Point const & src):_x(src.getX()),_y(src.getY()){
 
 	*this = src;
 	return ;
@@ -33,12 +33,12 @@ Point &	Point::operator=(Point const & rhs){
 	return *this;
 }
 
-Fixed const &	Point::getX(void) const{
+Fixed	Point::getX(void) const{
 
 	return this->_x;
 }
 
-Fixed const &	Point::getY(void) const{
+Fixed	Point::getY(void) const{
 
 	return this->_y;
 }
