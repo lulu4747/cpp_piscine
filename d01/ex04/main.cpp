@@ -8,7 +8,7 @@ static std::string	replace(std::ifstream& is, std::string& s1, std::string& s2){
 
 	while (!is.eof())
 		buffer += static_cast <char>(is.get());
-	for (size_t i  = buffer.find(s1); i != std::string::npos; i = buffer.find(s1))
+	for (size_t i  = buffer.find(s1); i != std::string::npos; i = buffer.find(s1, i + s2.size()))
 	{
 		buffer.erase(i, s1.size());
 		buffer.insert(i, s2);
@@ -30,13 +30,6 @@ int	main(int ac, char **av){
 	if (is.fail())
 	{
 		std::cerr << "Error:open" << std::endl;
-		return 1;
-	}
-
-	if (str[2].find(str[1]) != std::string::npos)
-	{
-		is.close();
-		std::cerr << "Error:arguments" << std::endl;
 		return 1;
 	}
 
