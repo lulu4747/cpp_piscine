@@ -1,16 +1,25 @@
-#include "ClapTrap.hpp"
+#include <iostream>
+#include <string>
+#include "Animal.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
 
 int main(void) {
 	
-	ClapTrap	R2("R2D2");
+	const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
 
-	R2.attack("C3");
-	R2.takeDamage(5);
-	R2.beRepaired(2);
-	R2.takeDamage(8);
-	R2.takeDamage(5);
-	R2.beRepaired(2);
-	R2.takeDamage(1);
-	R2.takeDamage(1);
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+
+	i->makeSound(); //will output the cat sound!
+	j->makeSound();
+	meta->makeSound();
+
+	delete meta;
+	delete j;
+	delete i;
+
 	return 0;
 }

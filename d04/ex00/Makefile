@@ -1,9 +1,13 @@
-NAME	= Claptrap
+NAME	= Animals
 
-SRCS	= ClapTrap.cpp
+SRCS	= Animal.cpp
+SRCS	+= Cat.cpp
+SRCS	+= Dog.cpp
 SRCS	+= main.cpp
 
-INC		= ClapTrap.hpp
+INC		= Animal.hpp
+INC		+= Cat.hpp
+INC		+= Dog.hpp
 
 OBJ		= $(SRCS:.cpp=.o)
 
