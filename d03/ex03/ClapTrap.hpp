@@ -7,6 +7,7 @@ class	ClapTrap{
 
 public:
 
+	ClapTrap(void);
 	ClapTrap(std::string const & name);
 	~ClapTrap(void);
 	ClapTrap(ClapTrap const & src);
@@ -21,6 +22,11 @@ public:
 	int			getHitpoints(void) const;
 	int			getEnergyPoints(void) const;
 	int			getAttackDamage(void) const;
+
+	void	setName(std::string name);
+	void	setHitpoints(int const amount);
+	void	setEnergyPoints(int const amount);
+	void	setAttackDamage(int const amount);
 
 private:
 
