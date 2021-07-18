@@ -13,7 +13,6 @@ Point::~Point(void){
 
 Point::Point(Point const & src):_x(src.getX()),_y(src.getY()){
 
-	*this = src;
 	return ;
 }
 
