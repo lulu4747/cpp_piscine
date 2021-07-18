@@ -2,21 +2,27 @@
 #include <string>
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap(void):_name(""),_Hitpoints(10),_EnergyPoints(10),_AttackDamage(0){
+
+	std::cout << "ClapTrap <unnamed> default constructor called" << std::endl;
+	return ;
+}
+
 ClapTrap::ClapTrap(std::string const & name):_name(name), _Hitpoints(10),_EnergyPoints(10),_AttackDamage(0){
 
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "ClapTrap" << this->_name << " initialisation constructor called" << std::endl;
 	return ;
 }
 
 ClapTrap::~ClapTrap(void){
 
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap " << this->_name << " destructor called" << std::endl;
 	return ;
 }
 
 ClapTrap::ClapTrap(ClapTrap const & src){
 
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap" << this->_name << " copy constructor called" << std::endl;
 	*this = src;
 	return ;
 }

@@ -1,10 +1,12 @@
-NAME	= Claptrap
+NAME	= FragTrap
 
 SRCS	= ClapTrap.cpp
+SRCS	+= FragTrap.cpp
 SRCS	+= main.cpp
 SRCS	+= ScavTrap.cpp
 
 INC		= ClapTrap.hpp
+INC		+= FragTrap.hpp
 INC		+= ScavTrap.hpp
 
 OBJ		= $(SRCS:.cpp=.o)

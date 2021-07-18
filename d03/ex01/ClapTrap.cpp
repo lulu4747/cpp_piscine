@@ -2,21 +2,27 @@
 #include <string>
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap(void):_name(""),_Hitpoints(10),_EnergyPoints(10),_AttackDamage(0){
+
+	std::cout << "ClapTrap <unnamed> default constructor called" << std::endl;
+	return ;
+}
+
 ClapTrap::ClapTrap(std::string const & name):_name(name), _Hitpoints(10),_EnergyPoints(10),_AttackDamage(0){
 
-	std::cout << "Default constructor called" << std::endl;
+	std::cout << "ClapTrap" << this->_name << " initialisation constructor called" << std::endl;
 	return ;
 }
 
 ClapTrap::~ClapTrap(void){
 
-	std::cout << "Destructor called" << std::endl;
+	std::cout << "ClapTrap " << this->_name << " destructor called" << std::endl;
 	return ;
 }
 
 ClapTrap::ClapTrap(ClapTrap const & src){
 
-	std::cout << "Copy constructor called" << std::endl;
+	std::cout << "ClapTrap" << src.getName() << " copy constructor called" << std::endl;
 	*this = src;
 	return ;
 }
@@ -92,4 +98,28 @@ int	ClapTrap::getEnergyPoints(void) const{
 int	ClapTrap::getAttackDamage(void) const{
 
 	return this->_AttackDamage;
+}
+
+void	ClapTrap::setName(std::string name){
+
+	this->_name = name;
+	return ;
+}
+
+void	ClapTrap::setHitpoints(int const amount){
+
+	this->_Hitpoints = amount;
+	return ;
+}
+
+void	ClapTrap::setEnergyPoints(int const amount){
+
+	this->_EnergyPoints = amount;
+	return ;
+}
+
+void	ClapTrap::setAttackDamage(int const amount){
+
+	this->_AttackDamage = amount;
+	return ;
 }
