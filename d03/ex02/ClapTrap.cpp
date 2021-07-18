@@ -100,7 +100,7 @@ int	ClapTrap::getAttackDamage(void) const{
 	return this->_AttackDamage;
 }
 
-void	ClapTrap::setName(std::string name){
+void	ClapTrap::setName(std::string & name){
 
 	this->_name = name;
 	return ;
