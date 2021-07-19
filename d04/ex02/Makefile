@@ -1,12 +1,12 @@
 NAME	= Abstract
 
-SRCS	= Animal.cpp
+SRCS	= AAnimal.cpp
 SRCS	+= Brain.cpp
 SRCS	+= Cat.cpp
 SRCS	+= Dog.cpp
 SRCS	+= main.cpp
 
-INC		= Animal.hpp
+INC		= AAnimal.hpp
 INC		+= Brain.hpp
 INC		+= Cat.hpp
 INC		+= Dog.hpp

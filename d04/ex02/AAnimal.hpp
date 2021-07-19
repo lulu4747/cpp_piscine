@@ -1,17 +1,17 @@
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef AANIMAL_HPP
+# define AANIMAL_HPP
 
 # include <string>
 
-class Animal{
+class AAnimal{
 
 public:
 
-	Animal(void);
-	virtual	~Animal(void);
-	Animal(Animal const & src);
+	AAnimal(void);
+	virtual	~AAnimal(void);
+	AAnimal(AAnimal const & src);
 
-	virtual Animal &	operator=(Animal const & rhs);
+	virtual AAnimal &	operator=(AAnimal const & rhs);
 
 	virtual void		makeSound(void) const = 0;
 	
