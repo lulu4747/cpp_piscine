@@ -11,7 +11,7 @@ INC		+= Point.hpp
 OBJ		= $(SRCS:.cpp=.o)
 
 CC		= clang++
-CFLAGS	= -Wall -Werror -Wextra
+CFLAGS	= -std=c++98 -Wall -Werror -Wextra
 RM		= rm -f
 RM_DIR	= rm -rf
 
