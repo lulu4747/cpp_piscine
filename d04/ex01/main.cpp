@@ -3,36 +3,35 @@
 #include "Animal.hpp"
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+#include "Brain.hpp"
 
 int main(void) {
-	
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
+	size_t	n;
 
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+	std::cout << "Animals array size = ";
+	std::cin >> n;
 
-	delete meta;
-	delete j;
-	delete i;
+	Animal* animals[n];
 
-	const WrongAnimal* wmeta = new WrongAnimal();
-	const WrongAnimal* wcat = new WrongCat();
+	for (size_t i = 0; i < n; i++)
+	{
+		std::cout << i << " : ";
+		if (i % 2)
+			animals[i] = new Cat();
+		else
+			animals[i] = new Dog();
+		std::cout << std::endl;
+	}
+	for (size_t i = 0; i < n; i++)	
+		delete animals[i];
+	/*
+	std::cout << std::endl << "Showing deep copy :" <<std::endl;
 
-	std::cout << wcat->getType() << " " << std::endl;
-
-	wmeta->makeSound();
-	wcat->makeSound();
-
-	delete wmeta;
-	delete wcat;
+	Cat*	cat1 = new Cat();
+	Cat* 	cat2 = new Cat(*cat1);
+	delete cat1;
+	delete cat2;*/
 
 	return 0;
 }

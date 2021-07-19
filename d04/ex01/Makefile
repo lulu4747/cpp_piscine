@@ -1,11 +1,13 @@
-NAME	= Animals
+NAME	= BrainedAnimals
 
 SRCS	= Animal.cpp
+SRCS	+= Brain.cpp
 SRCS	+= Cat.cpp
 SRCS	+= Dog.cpp
 SRCS	+= main.cpp
 
 INC		= Animal.hpp
+INC		+= Brain.hpp
 INC		+= Cat.hpp
 INC		+= Dog.hpp
 
