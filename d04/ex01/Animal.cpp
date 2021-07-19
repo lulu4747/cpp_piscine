@@ -37,3 +37,9 @@ std::string	Animal::getType(void) const{
 
 	return this->type;
 }
+
+void	Animal::setType(std::string str){
+
+	this->type = str;
+	return ;
+}
