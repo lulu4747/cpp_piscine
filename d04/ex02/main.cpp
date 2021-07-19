@@ -10,7 +10,7 @@ int main(void) {
 	//Animal* animal = new Animal();
 	Animal* cat = new Cat();
 
-	std::cout << "To test we must break" << std::endl;
+	std::cout << "To test it we must break it" << std::endl;
 
 	delete cat;
 
