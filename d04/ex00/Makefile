@@ -4,10 +4,14 @@ SRCS	= Animal.cpp
 SRCS	+= Cat.cpp
 SRCS	+= Dog.cpp
 SRCS	+= main.cpp
+SRCS	+= WrongAnimal.cpp
+SRCS	+= WrongCat.cpp
 
 INC		= Animal.hpp
 INC		+= Cat.hpp
 INC		+= Dog.hpp
+INC		+= WrongAnimal.hpp
+INC		+= WrongCat.hpp
 
 OBJ		= $(SRCS:.cpp=.o)
 
