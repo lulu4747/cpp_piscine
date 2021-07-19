@@ -1,13 +1,15 @@
-NAME	= FragTrap
+NAME	= Abstract
 
-SRCS	= ClapTrap.cpp
-SRCS	+= FragTrap.cpp
+SRCS	= Animal.cpp
+SRCS	+= Brain.cpp
+SRCS	+= Cat.cpp
+SRCS	+= Dog.cpp
 SRCS	+= main.cpp
-SRCS	+= ScavTrap.cpp
 
-INC		= ClapTrap.hpp
-INC		+= FragTrap.hpp
-INC		+= ScavTrap.hpp
+INC		= Animal.hpp
+INC		+= Brain.hpp
+INC		+= Cat.hpp
+INC		+= Dog.hpp
 
 OBJ		= $(SRCS:.cpp=.o)
 
