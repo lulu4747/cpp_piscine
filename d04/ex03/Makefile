@@ -1,15 +1,15 @@
-NAME	= DiamondTrap
+NAME	= test
 
-SRCS	= ClapTrap.cpp
-SRCS	+= DiamondTrap.cpp
-SRCS	+= FragTrap.cpp
+SRCS	= AMateria.cpp
+SRCS	+= ICharacter.cpp
 SRCS	+= main.cpp
-SRCS	+= ScavTrap.cpp
+SRCS	+= MateriaSource.cpp
 
-INC		= ClapTrap.hpp
-INC		+= DiamondTrap.hpp
-INC		+= FragTrap.hpp
-INC		+= ScavTrap.hpp
+INC		= AMateria.hpp
+INC		+= Character.hpp
+INC		+= ICharacter.hpp
+INC		+= IMateriaSource.hpp
+INC		+= MateriaSource.hpp
 
 OBJ		= $(SRCS:.cpp=.o)
 
