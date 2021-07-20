@@ -25,6 +25,11 @@ Character::Character(Character const & src){
 
 Character::~Character(){
 
+	for (size_t i = 0; i < this->_weight; i++)
+	{
+		if (this->_inventory[i])
+			delete this->_inventory[i];
+	}
 	return ;
 }
 
@@ -49,7 +54,11 @@ void	Character::equip(AMateria* m){
 
 	if (this->_weight == 4)
 		return ;
-	this->_inventory[this->_weight] = m;
+	for (size_t i = 0; i <= this->_weight; i++)
+	{
+		if (!this->_inventory[i])
+			this->_inventory[i] = m;
+	}
 	this->_weight++;
 	return ;
 }
@@ -57,7 +66,10 @@ void	Character::equip(AMateria* m){
 void	Character::unequip(int idx){
 
 	if (this->_inventory[idx] != NULL)
+	{
 		this->_inventory[idx] = NULL;
+		this->_weight--;
+	}
 	return ;
 }
 
@@ -73,10 +85,14 @@ size_t	Character::getWeight(void) const{
 
 AMateria const*	Character::getInventory(size_t i) const{
 
-	return this->_inventory[i];
+	if (i >= 0 && i <= this->_weight)
+		return this->_inventory[i];
+	return NULL;
 }
 
 void Character::use(int idx, ICharacter& target){
 
-	this->_inventory[idx]->use(target);
+	if (idx >= 0 && idx <= (int)this->_weight)
+		this->_inventory[idx]->use(target);
+	return ;
 }

@@ -18,6 +18,8 @@ MateriaSource::MateriaSource(MateriaSource const & src):_learned(0){
 
 MateriaSource::~MateriaSource(){
 
+	for (size_t i = 0; i < this->_learned; i++)
+		delete this->_materia[i];
 	return ;
 }
 
@@ -50,8 +52,8 @@ AMateria*	MateriaSource::createMateria(std::string const & type){
 
 	for (size_t i = 0; i < this->_learned; i++)
 	{
-		if (type.compare(this->_materia[i]->getType()))
-			return this->_materia[i];
+		if (!(type.compare(this->_materia[i]->getType())))
+			return this->_materia[i]->clone();
 	}
 	return NULL;
 }
