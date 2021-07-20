@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cmath>
 #include "Fixed.hpp"
 
@@ -14,7 +15,7 @@ Fixed::Fixed(const int n){
 
 Fixed::Fixed(const float n){
 
-	this->_rawbits = roundf(n * (1 << Fixed::_fracbits));
+	this->_rawbits = (int)roundf(n * (1 << Fixed::_fracbits));
 	return ;
 }
 
@@ -68,12 +69,18 @@ bool	Fixed::operator!=(Fixed const & rhs) const{
 
 Fixed	Fixed::operator+(Fixed const & rhs) const{
 
-	return Fixed(this->toFloat() + rhs.toFloat());
+	Fixed	copy = Fixed(*this);
+
+	copy._rawbits = this->_rawbits + rhs.getRawBits();
+	return copy;
 }
 
 Fixed	Fixed::operator-(Fixed const & rhs) const{
 
-	return Fixed(this->toFloat() - rhs.toFloat());
+	Fixed	copy = Fixed(*this);
+
+	copy._rawbits = this->_rawbits - rhs.getRawBits();
+	return copy;
 }
 
 Fixed	Fixed::operator*(Fixed const & rhs) const{
@@ -88,13 +95,13 @@ Fixed	Fixed::operator/(Fixed const & rhs) const{
 
 Fixed &	Fixed::operator++(){
 
-	this->_rawbits = this->_rawbits + 1;
+	this->_rawbits++;
 	return *this;
 }
 
 Fixed &	Fixed::operator--(){
 
-	this->_rawbits = this->_rawbits - 1;
+	this->_rawbits--;
 	return *this;
 }
 
@@ -102,7 +109,7 @@ Fixed	Fixed::operator++(int){
 
 	Fixed	copy = Fixed(*this);
 
-	this->_rawbits = this->_rawbits + 1;
+	this->_rawbits++;
 	return copy;
 }
 
@@ -110,7 +117,7 @@ Fixed	Fixed::operator--(int){
 
 	Fixed	copy = Fixed(*this);
 
-	this->_rawbits = this->_rawbits - 1;
+	this->_rawbits--;
 	return copy;
 }
 

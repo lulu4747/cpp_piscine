@@ -1,3 +1,4 @@
+#include <iostream>
 #include <cmath>
 #include "Fixed.hpp"
 
@@ -14,7 +15,7 @@ Fixed::Fixed(const int n){
 
 Fixed::Fixed(const float n){
 
-	this->_rawbits = roundf(n * (1 << Fixed::_fracbits));
+	this->_rawbits = (int)roundf(n * (1 << Fixed::_fracbits));
 	return ;
 }
 
