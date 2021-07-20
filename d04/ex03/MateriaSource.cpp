@@ -3,8 +3,10 @@
 #include "IMateriaSource.hpp"
 #include "MateriaSource.hpp"
 
-MateriaSource::MateriaSource(void):_learned(false){
+MateriaSource::MateriaSource(void):_learned(0){
 
+	for (size_t i = 0; i < 4; i++)
+		this->_materia[i] = NULL;
 	return ;
 }
 
@@ -16,38 +18,47 @@ MateriaSource::MateriaSource(MateriaSource const & src){
 
 MateriaSource::~MateriaSource(){
 
-	if 
+	return ;
 }
 
 MateriaSource &	MateriaSource::operator=(MateriaSource const & rhs){
 
-	if (this != &rhs && rhs.hasLearned() == true)
+	if (this != &rhs)
 	{
-		this->_learned = true;
-		for (t_mem *mem = rhs.getMem(); mem != NULL; mem = mem->next)
-		{
-			this->_mem = new t_mem;
-			this->_mem->_type = mem->_type;
-			this->_mem->_materia = new &(AMateria(*rhs.getMateria(mem->_type)));
-			this->_mem->next = NULL;
-		}
+		this->_learned = rhs.getLearned();
+		this->_materia[0] == rhs.getMateria(0);
+		this->_materia[1] == rhs.getMateria(1);
+		this->_materia[2] == rhs.getMateria(2);
+		this->_materia[3] == rhs.getMateria(3);
 	}
+	return *this;
 }
 
-void MateriaSource::learnMateria(AMateria* new_m){}
+void MateriaSource::learnMateria(AMateria* materia){
 
-AMateria*	MateriaSource::createMateria(std::string const & type){}
-
-AMateria*	MateriaSource::getMateria(std::string const & type) const{
-
-	t_mem*	mem = this->_mem;
-
-	while (mem && type.compare(mem->_type))
-		mem = mem->next;
-	return mem->_materia;
+	if (this->_learned == 4)
+		return ;
+	this->_materia[this->_learned] = materia;
+	this->_learned++;
+	return ;
 }
 
-bool const & MateriaSource::hasLearned(void) const{
+AMateria*	MateriaSource::createMateria(std::string const & type){
 
-	return	this->_learned;
+	for (size_t i = 0; i < this->_learned; i++)
+	{
+		if (type.compare(this->_materia[i]->getType()))
+			return this->_materia[i];
+	}
+	return NULL;
+}
+
+size_t	MateriaSource::getLearned(void) const{
+
+	return this->_learned;
+}
+
+AMateria const *	MateriaSource::getMateria(size_t i) const{
+
+	return this->_materia[i];
 }

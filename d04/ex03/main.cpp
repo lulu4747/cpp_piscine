@@ -1,39 +1,33 @@
-#include "ClapTrap.hpp"
-#include "ScavTrap.hpp"
-#include "FragTrap.hpp"
-#include "DiamondTrap.hpp"
+#include "IMateriaSource.hpp"
+#include "MateriaSource.hpp"
+#include "ICharacter.hpp"
+#include "Character.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
 
-int main(void) {
+int main()
+{
+	IMateriaSource* src = new MateriaSource();
 	
-	ClapTrap	R2("R2D2");
-	ScavTrap	Mario("Mario");
-	FragTrap	Archi("Archibald");
-	DiamondTrap	Jekyll("Jekyll");
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
 
-	R2.attack("C3");
-	Mario.attack("C3");
-	Archi.attack("C3");
-	Jekyll.attack("C3");
-	Mario.guardGate();
-	Jekyll.guardGate();
-	Archi.highFivesGuys();
-	Jekyll.highFivesGuys();
-	R2.takeDamage(5);
-	Archi.takeDamage(85);
-	Jekyll.takeDamage(85);
-	Jekyll.takeDamage(85);
-	Archi.beRepaired(3);
-	Jekyll.beRepaired(3);
-	R2.takeDamage(1);
-	Mario.takeDamage(500);
-	Mario.takeDamage(500);
-	Mario.beRepaired(63);
-	R2.beRepaired(2);
-	Mario.takeDamage(30);
-	R2.takeDamage(8);
-	R2.takeDamage(1);
-	Mario.guardGate();
-	Jekyll.guardGate();
-	Jekyll.whoAmI();
+	ICharacter* me = new Character("me");
+	AMateria* tmp;
+
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+
+	ICharacter* bob = new Character("bob");
+
+	me->use(0, *bob);
+	me->use(1, *bob);
+
+	delete bob;
+	delete me;
+	delete src;
+
 	return 0;
 }

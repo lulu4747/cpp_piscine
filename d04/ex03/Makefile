@@ -1,12 +1,17 @@
 NAME	= test
 
 SRCS	= AMateria.cpp
+SRCS	+= Character.cpp
+SRCS	+= Cure.cpp
+SRCS	+= Ice.cpp
 SRCS	+= ICharacter.cpp
 SRCS	+= main.cpp
 SRCS	+= MateriaSource.cpp
 
 INC		= AMateria.hpp
 INC		+= Character.hpp
+INC		+= Cure.hpp
+INC		+= Ice.hpp
 INC		+= ICharacter.hpp
 INC		+= IMateriaSource.hpp
 INC		+= MateriaSource.hpp
