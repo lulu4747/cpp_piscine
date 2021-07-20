@@ -4,7 +4,6 @@ SRCS	= AMateria.cpp
 SRCS	+= Character.cpp
 SRCS	+= Cure.cpp
 SRCS	+= Ice.cpp
-SRCS	+= ICharacter.cpp
 SRCS	+= main.cpp
 SRCS	+= MateriaSource.cpp
 

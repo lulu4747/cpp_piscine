@@ -23,12 +23,12 @@ Ice::~Ice(void){
 Ice &	Ice::operator=(Ice const & rhs){
 
 	(void)rhs;
-	return ;
+	return *this;
 }
 
 Ice* Ice::clone() const{
 
-	Ice*	new_ice;
+	Ice*	new_ice = new Ice();
 
 	return new_ice;
 }

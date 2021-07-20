@@ -23,12 +23,12 @@ Cure::~Cure(void){
 Cure &	Cure::operator=(Cure const & rhs){
 
 	(void)rhs;
-	return ;
+	return *this;
 }
 
 Cure* Cure::clone() const{
 
-	Cure*	new_cure;
+	Cure*	new_cure = new Cure();
 
 	return new_cure;
 }

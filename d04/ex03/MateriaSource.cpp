@@ -10,7 +10,7 @@ MateriaSource::MateriaSource(void):_learned(0){
 	return ;
 }
 
-MateriaSource::MateriaSource(MateriaSource const & src){
+MateriaSource::MateriaSource(MateriaSource const & src):_learned(0){
 
 	*this = src;
 	return ;
@@ -25,11 +25,14 @@ MateriaSource &	MateriaSource::operator=(MateriaSource const & rhs){
 
 	if (this != &rhs)
 	{
+		for (size_t i = 0; i < this->_learned; i++)
+			delete this->_materia[i];
 		this->_learned = rhs.getLearned();
-		this->_materia[0] == rhs.getMateria(0);
-		this->_materia[1] == rhs.getMateria(1);
-		this->_materia[2] == rhs.getMateria(2);
-		this->_materia[3] == rhs.getMateria(3);
+		if (this->_learned > 0)
+		{
+			for (size_t i = 0; i < 4; i++)
+				this->_materia[i] = rhs.getMateria(i)->clone();
+		}
 	}
 	return *this;
 }

@@ -3,7 +3,7 @@
 #include "AMateria.hpp"
 #include "Character.hpp"
 
-Character::Character(void):_name("Stranger"){
+Character::Character(void):_name("Stranger"),_weight(0){
 
 	for (size_t i = 0; i < 4; i++)
 		this->_inventory[i] = NULL;
@@ -33,11 +33,14 @@ Character &	Character::operator=(Character const & rhs){
 	if (this != &rhs)
 	{
 		this->_name = rhs.getName();
+		for (size_t i = 0; i < this->_weight; i++)
+			delete this->_inventory[i];
 		this->_weight = rhs.getWeight();
-		this->_inventory[0] == rhs.getInventory(0);
-		this->_inventory[1] == rhs.getInventory(1);
-		this->_inventory[2] == rhs.getInventory(2);
-		this->_inventory[3] == rhs.getInventory(3);
+		if (this->_weight > 0)
+		{
+			for (size_t i = 0; i < 4; i++)
+				this->_inventory[i] = rhs.getInventory(i)->clone();
+		}
 	}
 	return *this;
 }
@@ -53,8 +56,14 @@ void	Character::equip(AMateria* m){
 
 void	Character::unequip(int idx){
 
-	this->_inventory[idx] = NULL;
+	if (this->_inventory[idx] != NULL)
+		this->_inventory[idx] = NULL;
 	return ;
+}
+
+std::string const & Character::getName(void) const{
+
+	return this->_name;
 }
 
 size_t	Character::getWeight(void) const{
