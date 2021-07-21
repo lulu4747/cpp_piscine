@@ -52,7 +52,7 @@ void ClapTrap::takeDamage(unsigned int amount){
 	if (this->_Hitpoints == 0)
 	{
 		std::cout << "ClapTrap " << this->_name	<< " cannot be attacked anymore"
-					<< " ... He's gone ! x,@ " << std::endl;
+					<< " ... He's dead ! x,@ " << std::endl;
 		return ;
 	}
 	this->_Hitpoints -= amount;
@@ -80,7 +80,7 @@ void ClapTrap::beRepaired(unsigned int amount){
 	return ;
 }
 
-std::string	ClapTrap::getName(void) const{
+std::string const &	ClapTrap::getName(void) const{
 
 	return this->_name;
 }
@@ -100,7 +100,7 @@ int	ClapTrap::getAttackDamage(void) const{
 	return this->_AttackDamage;
 }
 
-void	ClapTrap::setName(std::string & name){
+void	ClapTrap::setName(std::string const & name){
 
 	this->_name = name;
 	return ;

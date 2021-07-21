@@ -35,5 +35,10 @@ int main(void) {
 	Mario.guardGate();
 	Jekyll.guardGate();
 	Jekyll.whoAmI();
+
+	DiamondTrap copy = DiamondTrap(Jekyll);
+
+	copy.whoAmI();
+
 	return 0;
 }

@@ -14,11 +14,9 @@ DiamondTrap::DiamondTrap(void){
 	this->setAttackDamage(this->FragTrap::getAttackDamage());
 }
 
-DiamondTrap::DiamondTrap(std::string const & name){
+DiamondTrap::DiamondTrap(std::string const & name):ClapTrap(name + "_clap_name"), _name(name){
 
 	std::cout << "DiamondTrap " << name << " initialisation constructor called" << std::endl;
-	this->ClapTrap::setName(name + "_clap_name");
-	this->_name = name;
 	this->setHitpoints(this->FragTrap::getHitpoints());
 	this->setEnergyPoints(this->ScavTrap::getEnergyPoints());
 	this->setAttackDamage(this->FragTrap::getAttackDamage());
@@ -42,6 +40,7 @@ DiamondTrap &	DiamondTrap::operator=(DiamondTrap const & rhs){
 
 	if (this != &rhs)
 	{
+		this->ClapTrap::setName(rhs.ClapTrap::getName());
 		this->setName(rhs.getName());
 		this->setHitpoints(rhs.getHitpoints());
 		this->setEnergyPoints(rhs.getEnergyPoints());
@@ -53,45 +52,6 @@ DiamondTrap &	DiamondTrap::operator=(DiamondTrap const & rhs){
 void	DiamondTrap::whoAmI(void){
 
 	std::cout << "Is this DiamondTrap " << this->_name << " or is it " << this->ClapTrap::getName() << " ?" << std::endl;
-	return ;
-}
-
-void	DiamondTrap::attack(std::string const & target){
-
-	this->ScavTrap::attack(target);
-	return ;
-}
-
-void	DiamondTrap::takeDamage(unsigned int amount){
-
-	if (this->getHitpoints() == 0)
-	{
-		std::cout << "DiamondTrap " << this->_name	<< " cannot be attacked anymore"
-					<< " ... He's in a trashcan ! x,@ " << std::endl;
-		return ;
-	}
-	this->setHitpoints(this->getHitpoints() - amount);
-	std::cout << "DiamondTrap " << this->_name
-				<< " took " << amount << " points of damage ";
-	if (this->getHitpoints() <= 0)
-	{
-		this->setHitpoints(0);
-		std::cout << "and is now in a better place..." << std::endl;
-	}
-	else
-	{
-		std::cout << "and survived with "
-			<< this->getHitpoints() << " HP left ! Did he deserve it ?" << std::endl;
-	}
-	return ;
-}
-
-void	DiamondTrap::beRepaired(unsigned int amount){
-
-	this->setHitpoints(this->getHitpoints() + amount);
-	std::cout << "DiamondTrap " << this->_name << " was repaired by "
-				<< amount << " points ! He is left with " << this->getHitpoints()
-				<< " HP. How long will he keep living like this ?..." << std::endl;
 	return ;
 }
 
