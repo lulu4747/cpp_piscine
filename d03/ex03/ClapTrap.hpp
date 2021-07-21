@@ -31,8 +31,6 @@ protected:
 
 	ClapTrap(void);
 
-private:
-
 	std::string			_name;
 	int					_Hitpoints;
 	int					_EnergyPoints;
