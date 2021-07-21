@@ -80,7 +80,7 @@ void ClapTrap::beRepaired(unsigned int amount){
 	return ;
 }
 
-std::string	ClapTrap::getName(void) const{
+std::string const &	ClapTrap::getName(void) const{
 
 	return this->_name;
 }
@@ -100,7 +100,7 @@ int	ClapTrap::getAttackDamage(void) const{
 	return this->_AttackDamage;
 }
 
-void	ClapTrap::setName(std::string & name){
+void	ClapTrap::setName(std::string const & name){
 
 	this->_name = name;
 	return ;

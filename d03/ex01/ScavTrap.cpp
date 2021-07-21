@@ -11,10 +11,9 @@ ScavTrap::ScavTrap(void){
 	this->setAttackDamage(20);
 }
 
-ScavTrap::ScavTrap(std::string const & name):_GateKeeping(false){
+ScavTrap::ScavTrap(std::string const & name):ClapTrap(name),_GateKeeping(false){
 
 	std::cout << "ScavTrap " << name << " initialisation constructor called" << std::endl;
-	this->setName(name);
 	this->setHitpoints(100);
 	this->setEnergyPoints(50);
 	this->setAttackDamage(20);
@@ -39,6 +38,7 @@ ScavTrap &	ScavTrap::operator=(ScavTrap const & rhs){
 	if (this != &rhs)
 	{
 		this->setName(rhs.getName());
+		this->_GateKeeping = rhs.getKeeping();
 		this->setHitpoints(rhs.getHitpoints());
 		this->setEnergyPoints(rhs.getEnergyPoints());
 		this->setAttackDamage(rhs.getAttackDamage());
@@ -69,35 +69,7 @@ void	ScavTrap::attack(std::string const & target){
 	return ;
 }
 
-void	ScavTrap::takeDamage(unsigned int amount){
+bool	ScavTrap::getKeeping(void) const{
 
-	if (this->getHitpoints() == 0)
-	{
-		std::cout << "ScavTrap " << this->getName()	<< " cannot be attacked anymore"
-					<< " ... He's in pieces ! x,@ " << std::endl;
-		return ;
-	}
-	this->setHitpoints(this->getHitpoints() - amount);
-	std::cout << "ScavTrap " << this->getName()
-				<< " took " << amount << " points of damage ";
-	if (this->getHitpoints() <= 0)
-	{
-		this->setHitpoints(0);
-		std::cout << "and is now destroyed ! :O" << std::endl;
-	}
-	else
-	{
-		std::cout << "and survived with "
-			<< this->getHitpoints() << " HP left ! It was nothing but a scratch !" << std::endl;
-	}
-	return ;
-}
-
-void	ScavTrap::beRepaired(unsigned int amount){
-
-	this->setHitpoints(this->getHitpoints() + amount);
-	std::cout << "ScavTrap " << this->getName() << " was repaired by "
-				<< amount << " points ! He is left with " << this->getHitpoints()
-				<< " HP. Glorious !" << std::endl;
-	return ;
+	return this->_GateKeeping;
 }

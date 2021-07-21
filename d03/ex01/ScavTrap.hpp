@@ -8,7 +8,6 @@ class	ScavTrap : public ClapTrap{
 
 public:
 
-	ScavTrap(void);
 	ScavTrap(std::string const & name);
 	~ScavTrap(void);
 	ScavTrap(ScavTrap const & src);
@@ -17,8 +16,12 @@ public:
 
 	void	guardGate(void);
 	void	attack(std::string const & target);
-	void	takeDamage(unsigned int amount);
-	void	beRepaired(unsigned int amount);
+
+	bool	getKeeping(void) const;
+
+protected:
+
+	ScavTrap(void);
 
 private:
 
