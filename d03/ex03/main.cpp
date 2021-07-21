@@ -36,7 +36,7 @@ int main(void) {
 	Jekyll.guardGate();
 	Jekyll.whoAmI();
 
-	DiamondTrap copy = DiamondTrap(Jekyll);
+	DiamondTrap copy = Jekyll;
 
 	copy.whoAmI();
 

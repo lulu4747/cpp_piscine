@@ -55,6 +55,12 @@ void	DiamondTrap::whoAmI(void){
 	return ;
 }
 
+void	DiamondTrap::setName(std::string name){
+
+	this->_name = name;
+	return ;
+}
+
 std::string	DiamondTrap::getName(void) const{
 
 	return this->_name;
