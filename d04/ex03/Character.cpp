@@ -25,7 +25,7 @@ Character::Character(Character const & src){
 
 Character::~Character(){
 
-	for (size_t i = 0; i < this->_weight; i++)
+	for (size_t i = 0; i < 4; i++)
 	{
 		if (this->_inventory[i])
 			delete this->_inventory[i];
