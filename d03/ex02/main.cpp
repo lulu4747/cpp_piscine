@@ -6,7 +6,7 @@ int main(void) {
 	
 	ClapTrap	R2("R2D2");
 	ScavTrap	Mario("Mario");
-	FragTrap	Archi("Archibald");
+	FragTrap	Archi("Samus");
 
 	R2.attack("C3");
 	Mario.attack("C3");
