@@ -1,38 +1,39 @@
 #include <iostream>
-#include <string>
-#include "Animal.hpp"
-#include "Cat.hpp"
-#include "Dog.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+#include "Bureaucrat.hpp"
 
 int main(void) {
-	
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
-
-	delete meta;
-	delete j;
-	delete i;
-
-	const WrongAnimal* wmeta = new WrongAnimal();
-	const WrongAnimal* wcat = new WrongCat();
-
-	std::cout << wcat->getType() << " " << std::endl;
-
-	wmeta->makeSound();
-	wcat->makeSound();
-
-	delete wmeta;
-	delete wcat;
+	try{
+		Bureaucrat	Gwendo("Gwendolyne", 1);
+	}
+	catch(std::exception & e){
+		std::cout << e.what() << std::endl;
+	}
+	try{
+	Bureaucrat	Lionel("Lionel", 150);
+	}
+	catch(std::exception & e){
+		std::cout << e.what() << std::endl;
+	}
+	try{	
+		Bureaucrat	George("George", 0);
+	}
+	catch(std::exception & e){
+		std::cout << e.what() << std::endl;
+	}
+	try{	
+		Bureaucrat	Simon("Simon", 151);
+	}
+	catch(std::exception & e){
+		std::cout << e.what() << std::endl;
+	}
+/*
+	Gwendo.upgrade();
+	Gwendo.downgrade();
+	Lionel.upgrade();
+	Lionel.downgrade();*/
 
 	return 0;
 }
+
+//use pointer instead of this crao shit

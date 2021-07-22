@@ -1,39 +1,62 @@
 #include <iostream>
 #include <string>
-#include "Animal.hpp"
+# include <stdexcept>
+#include "Bureaucrat.hpp"
 
-Animal::Animal(void):type(""){
+Bureaucrat::Bureaucrat(void):_name("Some random"),_grade(150){
 
-	std::cout << "Animal default constructor called" << std::endl;
-	return ;
-}
-Animal::~Animal(void){
-
-	std::cout << "Animal destructor called" << std::endl;
 	return ;
 }
 
-Animal::Animal(Animal const & src){
+Bureaucrat::Bureaucrat(std::string const & name, int grade):_name(name),_grade(grade){
 
-	std::cout << "Animal copy constructor called" << std::endl;
+	if (this->_grade <= 0)
+		throw (GradeTooHighException());
+	if (this->_grade > 150)
+		throw (GradeTooLowException());
+	return ;
+}
+
+Bureaucrat::Bureaucrat(Bureaucrat const & src):_name(src.getName()){
+
 	*this = src;
 	return ;
 }
 
-Animal &	Animal::operator=(Animal const & rhs){
+Bureaucrat::~Bureaucrat(void){
 
-	if (this != &rhs)
-		this->type = rhs.getType();
-	return *this;
-}
-
-void	Animal::makeSound(void) const{
-
-	std::cout << "Animal is ... what is it called again ?" << std::endl;
 	return ;
 }
 
-std::string	Animal::getType(void) const{
+Bureaucrat &	Bureaucrat::operator=(Bureaucrat const & rhs){
 
-	return this->type;
+	if (this != &rhs)
+		this->_grade = rhs.getGrade();
+	return *this;
+}
+
+std::string const &	Bureaucrat::getName(void) const{
+
+	return this->_name;
+}
+
+int	Bureaucrat::getGrade(void) const{
+
+	return this->_grade;
+}
+
+void	Bureaucrat::upgrade(void){
+
+	if (this->_grade - 1 <= 0)
+		throw(GradeTooHighException());
+	this->_grade--;
+	return ;
+}
+
+void	Bureaucrat::downgrade(void){
+
+	if (this->_grade + 1 > 150)
+		throw(GradeTooLowException());
+	this->_grade++;
+	return ;
 }
