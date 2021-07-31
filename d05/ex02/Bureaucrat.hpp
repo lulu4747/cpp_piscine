@@ -42,6 +42,6 @@ private:
 
 };
 
-#endif
+std::ostream &	operator<<(std::ostream & o, Bureaucrat const & rhs);
 
-//add << operator
+#endif
