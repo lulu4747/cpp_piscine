@@ -3,11 +3,6 @@
 #include <stdexcept>
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(void):_name("Some random"),_grade(150){
-
-	return ;
-}
-
 Bureaucrat::Bureaucrat(std::string const & name, int grade):_name(name),_grade(grade){
 
 	if (this->_grade <= 0)
