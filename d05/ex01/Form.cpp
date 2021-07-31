@@ -1,45 +1,73 @@
 #include <iostream>
 #include <string>
-#include "Animal.hpp"
+#include <stdexcept>
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
-Animal::Animal(void):type(""){
+Form::Form(std::string const & name, int sign, int exec)
+	:_name(name), _grade_to_sign(sign), _grade_to_execute(exec), _signature(false){
 
-	std::cout << "Animal default constructor called" << std::endl;
+	if (this->_grade_to_sign <= 0 || this->_grade_to_execute <= 0)
+		throw (GradeTooHighException());
+	if (this->_grade_to_sign > 150 || this->_grade_to_execute > 150)
+		throw (GradeTooLowException());
 	return ;
 }
-Animal::~Animal(void){
 
-	std::cout << "Animal destructor called" << std::endl;
-	return ;
-}
+Form::Form(Form const & src)
+	:_name(src.getName()), _grade_to_sign(src.getGradeToSign()), _grade_to_execute(src.getGradeToExecute()){
 
-Animal::Animal(Animal const & src){
-
-	std::cout << "Animal copy constructor called" << std::endl;
 	*this = src;
 	return ;
 }
 
-Animal &	Animal::operator=(Animal const & rhs){
+Form::~Form(void){
+
+	return ;
+}
+
+Form &	Form::operator=(Form const & rhs){
 
 	if (this != &rhs)
-		this->type = rhs.getType();
+		this->_signature = rhs.getSignature();
 	return *this;
 }
 
-void	Animal::makeSound(void) const{
+std::string const	Form::getName(void) const{
 
-	std::cout << "Animal is ... what is it called again ?" << std::endl;
+	return this->_name;
+}
+
+int	Form::getGradeToSign(void) const{
+
+	return this->_grade_to_sign;
+}
+
+int	Form::getGradeToExecute(void) const{
+
+	return this->_grade_to_execute;
+}
+
+bool	Form::getSignature(void) const{
+
+	return this->_signature;
+}
+
+void	Form::beSigned(Bureaucrat const & bureaucrat){
+
+	if (bureaucrat.getGrade() > this->_grade_to_sign)
+		throw (GradeTooLowException());
+	this->_signature = true;
 	return ;
 }
 
-std::string	Animal::getType(void) const{
+std::ostream &	operator<<(std::ostream & o, Form const & rhs){
 
-	return this->type;
-}
-
-void	Animal::setType(std::string str){
-
-	this->type = str;
-	return ;
+	o << "<" <<  std::boolalpha 
+		<< rhs.getName() << "> form grade needed to sign <"
+		<< rhs.getGradeToSign() << "> grade needed to execute <"
+		<< rhs.getGradeToExecute() << "> signature status <"
+		<< rhs.getSignature() << ">"
+	<< std::endl;
+	return o;
 }

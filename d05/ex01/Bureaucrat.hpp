@@ -3,6 +3,7 @@
 
 # include <string>
 # include <stdexcept>
+# include "Form.hpp"
 
 class Bureaucrat{
 
@@ -19,6 +20,7 @@ public:
 
 	void	upgrade(void);
 	void	downgrade(void);
+	void	signForm(Form & form);
 
 	class GradeTooHighException : public std::exception{
 	public:

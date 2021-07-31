@@ -1,38 +1,46 @@
 #include <iostream>
-#include <string>
-#include "Animal.hpp"
-#include "Cat.hpp"
-#include "Dog.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+#include <stdexcept>
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main(void) {
-	
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
+	Bureaucrat Joel("Joel", 5);
+	Form*	test;
 
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+	try{
+		test = new Form("test", 151, 151);}
+	catch(const std::exception& e){
+		std::cerr << e.what() << '\n';}
+	try{
+		test = new Form("test", 0, 0);}
+	catch(const std::exception& e){
+		std::cerr << e.what() << '\n';}
+	try{
+		test = new Form("test", 4, 8);}
+	catch(const std::exception& e){
+		std::cerr << e.what() << '\n';}
 
-	delete meta;
-	delete j;
-	delete i;
+	std::cout << *test << std::endl;
 
-	const WrongAnimal* wmeta = new WrongAnimal();
-	const WrongAnimal* wcat = new WrongCat();
+	Joel.signForm(*test);
+	try{
+	test->beSigned(Joel);}
+	catch(const std::exception& e){
+		std::cerr << e.what() << '\n';}
 
-	std::cout << wcat->getType() << " " << std::endl;
+	std::cout << *test << std::endl;
 
-	wmeta->makeSound();
-	wcat->makeSound();
+	Joel.upgrade();
 
-	delete wmeta;
-	delete wcat;
+	Joel.signForm(*test);
+	try{
+	test->beSigned(Joel);}
+	catch(const std::exception& e){
+		std::cerr << e.what() << '\n';}
 
+	std::cout << *test << std::endl;
+
+	delete test;
 	return 0;
 }
