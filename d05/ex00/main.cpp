@@ -26,36 +26,35 @@ int main(void) {
 	catch(std::exception & e){
 		std::cout << e.what() << std::endl;}
 
-	std::cout << "Gwendo grade : " << Gwendo->getGrade() << std::endl
-			<< "Lionel grade : " << Lionel->getGrade() << std::endl;
+	std::cout << *Gwendo << std::endl << *Lionel << std::endl;
 
 	try{
 		Gwendo->upgrade();}
 	catch(std::exception & e){
 		std::cout << e.what() << std::endl;}
 
-	std::cout << "Gwendo grade : " << Gwendo->getGrade() << std::endl;
+	std::cout << *Gwendo << std::endl;
 
 	try{
 		Gwendo->downgrade();}
 	catch(std::exception & e){
 		std::cout << e.what() << std::endl;}
 
-	std::cout << "Gwendo grade : " << Gwendo->getGrade() << std::endl;
+	std::cout << *Gwendo << std::endl;
 
 	try{
 		Lionel->downgrade();}
 	catch(std::exception & e){
 		std::cout << e.what() << std::endl;}
 
-	std::cout << "Lionel grade : " << Lionel->getGrade() << std::endl;
+	std::cout << *Lionel << std::endl;
 
 	try{
 		Lionel->upgrade();}
 	catch(std::exception & e){
 		std::cout << e.what() << std::endl;}
 
-	std::cout << "Lionel grade : " << Lionel->getGrade() << std::endl;
+	std::cout << *Lionel << std::endl;
 
 	delete Gwendo;
 	delete Lionel;
