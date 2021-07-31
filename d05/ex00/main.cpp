@@ -1,39 +1,64 @@
 #include <iostream>
+# include <stdexcept>
 #include "Bureaucrat.hpp"
 
 int main(void) {
 
+	Bureaucrat*	Gwendo;
+	Bureaucrat*	Lionel;
+	Bureaucrat*	George;
+	Bureaucrat*	Simon;
+
 	try{
-		Bureaucrat	Gwendo("Gwendolyne", 1);
-	}
+		Gwendo = new Bureaucrat("Gwendolyne", 1);}
 	catch(std::exception & e){
-		std::cout << e.what() << std::endl;
-	}
+		std::cout << e.what() << std::endl;}
 	try{
-	Bureaucrat	Lionel("Lionel", 150);
-	}
+		Lionel = new Bureaucrat("Lionel", 150);}
 	catch(std::exception & e){
-		std::cout << e.what() << std::endl;
-	}
+		std::cout << e.what() << std::endl;}
 	try{	
-		Bureaucrat	George("George", 0);
-	}
+		George = new Bureaucrat("George", 0);}
 	catch(std::exception & e){
-		std::cout << e.what() << std::endl;
-	}
+		std::cout << e.what() << std::endl;}
 	try{	
-		Bureaucrat	Simon("Simon", 151);
-	}
+		Simon = new Bureaucrat("Simon", 151);}
 	catch(std::exception & e){
-		std::cout << e.what() << std::endl;
-	}
-/*
-	Gwendo.upgrade();
-	Gwendo.downgrade();
-	Lionel.upgrade();
-	Lionel.downgrade();*/
+		std::cout << e.what() << std::endl;}
+
+	std::cout << "Gwendo grade : " << Gwendo->getGrade() << std::endl
+			<< "Lionel grade : " << Lionel->getGrade() << std::endl;
+
+	try{
+		Gwendo->upgrade();}
+	catch(std::exception & e){
+		std::cout << e.what() << std::endl;}
+
+	std::cout << "Gwendo grade : " << Gwendo->getGrade() << std::endl;
+
+	try{
+		Gwendo->downgrade();}
+	catch(std::exception & e){
+		std::cout << e.what() << std::endl;}
+
+	std::cout << "Gwendo grade : " << Gwendo->getGrade() << std::endl;
+
+	try{
+		Lionel->downgrade();}
+	catch(std::exception & e){
+		std::cout << e.what() << std::endl;}
+
+	std::cout << "Lionel grade : " << Lionel->getGrade() << std::endl;
+
+	try{
+		Lionel->upgrade();}
+	catch(std::exception & e){
+		std::cout << e.what() << std::endl;}
+
+	std::cout << "Lionel grade : " << Lionel->getGrade() << std::endl;
+
+	delete Gwendo;
+	delete Lionel;
 
 	return 0;
 }
-
-//use pointer instead of this crao shit
