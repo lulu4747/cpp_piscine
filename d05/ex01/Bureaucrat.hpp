@@ -1,26 +1,47 @@
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef BUREAUCRAT_HPP
+# define BUREAUCRAT_HPP
 
 # include <string>
+# include <stdexcept>
 
-class Animal{
+class Bureaucrat{
 
 public:
 
-	Animal(void);
-	virtual	~Animal(void);
-	Animal(Animal const & src);
+	Bureaucrat(std::string const & name, int grade);
+	Bureaucrat(Bureaucrat const & src);
+	virtual	~Bureaucrat(void);
 
-	virtual Animal &	operator=(Animal const & rhs);
-
-	virtual void		makeSound(void) const;
+	virtual Bureaucrat &	operator=(Bureaucrat const & rhs);
 	
-	std::string	getType(void) const;
+	std::string	const &	getName(void) const;
+	int					getGrade(void) const;
 
-protected:
+	void	upgrade(void);
+	void	downgrade(void);
 
-	std::string	type;
+	class GradeTooHighException : public std::exception{
+	public:
+		virtual const char *	what() const throw(){
+			return ("Grade too high");
+		}
+	};
+	class GradeTooLowException : public std::exception{
+	public:
+		virtual const char *	what() const throw(){
+			return ("Grade too low");
+		}
+	};
+
+private:
+
+	Bureaucrat(void);
+
+	std::string const	_name;
+	int					_grade;
 
 };
 
 #endif
+
+//add << operator
