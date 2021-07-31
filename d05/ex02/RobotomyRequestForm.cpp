@@ -1,45 +1,36 @@
 #include <iostream>
 #include <string>
-#include "Brain.hpp"
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
+#include "RobotomyRequestForm.hpp"
 
-Brain::Brain(void){
 
-	std::cout << "Brain default constructor called" << std::endl;
-	for (size_t i = 0; i < 100; i++)
-		this->_ideas[i] = "";
-	return ;
+RobotomyRequestForm::RobotomyRequestForm(std::string const & name):Form(name, 72, 45){
+
+	return;
 }
 
-Brain::Brain(Brain const & src){
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src):Form(src.getName(), 72, 45){
 
-	std::cout << "Brain copy constructor called" << std::endl;
 	*this = src;
+	return;
+}
+
+RobotomyRequestForm::~RobotomyRequestForm(void){
+
 	return ;
 }
 
-Brain::~Brain(void){
+RobotomyRequestForm &	RobotomyRequestForm::operator=(RobotomyRequestForm const & rhs){
 
-	std::cout << "Brain destructor called" << std::endl;
-	return ;
-}
-
-Brain &	Brain::operator=(Brain const & rhs){
-
-	if (this != &rhs)
-	{
-		for (size_t i = 0; i < 100; i++)
-			this->_ideas[i] = rhs.getIdea(i);
-	}
+	this->Form::operator=(rhs);
 	return *this;
 }
 
-std::string	Brain::getIdea(size_t index) const{
+void	RobotomyRequestForm::execute(Bureaucrat const & bureaucrat, std::string target){
 
-	return this->_ideas[index];
-}
-
-void	Brain::setIdea(size_t index, std::string str){
-
-	this->_ideas[index] = str;
+	if (bureaucrat.getGrade() > this->getGradeToExecute())
+		throw (GradeTooLowException());
+	std::cout << "<" << target << "> has been pardoned by Zafod Beeblebrox" << std::endl;
 	return ;
 }

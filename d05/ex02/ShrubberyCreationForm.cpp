@@ -1,39 +1,36 @@
 #include <iostream>
 #include <string>
-#include "AAnimal.hpp"
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
+#include "ShrubberyCreationForm.hpp"
 
-AAnimal::AAnimal(void):type(""){
 
-	std::cout << "AAnimal default constructor called" << std::endl;
-	return ;
-}
-AAnimal::~AAnimal(void){
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const & name):Form(name, 145, 137){
 
-	std::cout << "AAnimal destructor called" << std::endl;
-	return ;
+	return;
 }
 
-AAnimal::AAnimal(AAnimal const & src){
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src):Form(src.getName(), 145, 137){
 
-	std::cout << "AAnimal copy constructor called" << std::endl;
 	*this = src;
+	return;
+}
+
+ShrubberyCreationForm::~ShrubberyCreationForm(void){
+
 	return ;
 }
 
-AAnimal &	AAnimal::operator=(AAnimal const & rhs){
+ShrubberyCreationForm &	ShrubberyCreationForm::operator=(ShrubberyCreationForm const & rhs){
 
-	if (this != &rhs)
-		this->type = rhs.getType();
+	this->Form::operator=(rhs);
 	return *this;
 }
 
-std::string	AAnimal::getType(void) const{
+void	ShrubberyCreationForm::execute(Bureaucrat const & bureaucrat, std::string target){
 
-	return this->type;
-}
-
-void	AAnimal::setType(std::string str){
-
-	this->type = str;
+	if (bureaucrat.getGrade() > this->getGradeToExecute())
+		throw (GradeTooLowException());
+	std::cout << "<" << target << "> has been pardoned by Zafod Beeblebrox" << std::endl;
 	return ;
 }

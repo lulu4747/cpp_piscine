@@ -2,25 +2,23 @@
 # define AANIMAL_HPP
 
 # include <string>
+# include "Form.hpp"
 
-class AAnimal{
+class ShrubberyCreationForm : public Form{
 
 public:
 
-	AAnimal(void);
-	virtual	~AAnimal(void);
-	AAnimal(AAnimal const & src);
+	ShrubberyCreationForm(std::string const & name);
+	ShrubberyCreationForm(ShrubberyCreationForm const & src);
+	virtual	~ShrubberyCreationForm(void);
 
-	virtual AAnimal &	operator=(AAnimal const & rhs);
+	ShrubberyCreationForm &	operator=(ShrubberyCreationForm const & rhs);
 
-	virtual void		makeSound(void) const = 0;
-	
-	std::string	getType(void) const;
-	void		setType(std::string str);
+	void	execute(Bureaucrat const & bureaucrat, std::string target);
 
-protected:
+private:
 
-	std::string	type;
+	ShrubberyCreationForm(void);
 
 };
 
