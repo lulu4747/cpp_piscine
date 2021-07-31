@@ -27,7 +27,7 @@ PresidentialPardonForm &	PresidentialPardonForm::operator=(PresidentialPardonFor
 	return *this;
 }
 
-void	PresidentialPardonForm::execute(Bureaucrat const & bureaucrat, std::string target){
+void	PresidentialPardonForm::execute(Bureaucrat const & bureaucrat, std::string const & target) const{
 
 	if (bureaucrat.getGrade() > this->getGradeToExecute())
 		throw (GradeTooLowException());

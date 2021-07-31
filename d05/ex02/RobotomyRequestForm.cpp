@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <cstdlib>
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -27,10 +28,16 @@ RobotomyRequestForm &	RobotomyRequestForm::operator=(RobotomyRequestForm const &
 	return *this;
 }
 
-void	RobotomyRequestForm::execute(Bureaucrat const & bureaucrat, std::string target){
+void	RobotomyRequestForm::execute(Bureaucrat const & bureaucrat, std::string const & target) const{
 
 	if (bureaucrat.getGrade() > this->getGradeToExecute())
 		throw (GradeTooLowException());
-	std::cout << "<" << target << "> has been pardoned by Zafod Beeblebrox" << std::endl;
+
+	std::cout << "* Some drilling noises *" << std::endl << "<" << target << ">";
+	if (std::rand() % 2)
+		std::cout << " has been robotomized successfully" << std::endl;
+	else
+		std::cout << "'s robotomy failed" << std::endl;
+
 	return ;
 }

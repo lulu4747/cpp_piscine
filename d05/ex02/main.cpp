@@ -1,38 +1,54 @@
 #include <iostream>
-#include <string>
-#include "Animal.hpp"
-#include "Cat.hpp"
-#include "Dog.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+#include <stdexcept>
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
-int main(void) {
+int main(void) {							//Ajouter proprement execute methods (+ in base form class) en relisant bien le sujet
+
+	Bureaucrat Joel("Joel", 1);
+	Form*	test;
+
+	for (int i = 0; i < 3; i++)
+	{
+		if (i == 0){
+			std::cout << "PresidentialPardonForm :" << std::endl;
+			test = new PresidentialPardonForm("test");
+		}
+		else if (i == 1){
+			std::cout << "RobotomyRequestForm :" << std::endl;
+			test = new RobotomyRequestForm("test");
+		}
+		else{
+			std::cout << "ShrubberyCreationForm :" << std::endl;
+			test = new ShrubberyCreationForm("test");
+		}
+
+		std::cout << *test << std::endl;
 	
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
+		Joel = Bureaucrat("Joel", test->getGradeToSign() + 1);
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
+		Joel.signForm(*test);
+		try{
+		test->beSigned(Joel);}
+		catch(const std::exception& e){
+			std::cerr << e.what() << '\n';}
 
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+		std::cout << *test << std::endl;
 
-	delete meta;
-	delete j;
-	delete i;
+		Joel.upgrade();
 
-	const WrongAnimal* wmeta = new WrongAnimal();
-	const WrongAnimal* wcat = new WrongCat();
+		Joel.signForm(*test);
+		try{
+		test->beSigned(Joel);}
+		catch(const std::exception& e){
+			std::cerr << e.what() << '\n';}
 
-	std::cout << wcat->getType() << " " << std::endl;
+		std::cout << *test << std::endl << std::endl << std::endl;
 
-	wmeta->makeSound();
-	wcat->makeSound();
-
-	delete wmeta;
-	delete wcat;
-
+		delete test;
+	}
 	return 0;
 }
