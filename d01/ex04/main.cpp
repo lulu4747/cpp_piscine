@@ -33,7 +33,8 @@ int	main(int ac, char **av){
 		return 1;
 	}
 
-	std::ofstream	os(str[0] + ".replace");
+	std::string		tmp(str[0] + ".replace");
+	std::ofstream	os(tmp.c_str());
 
 	os << replace(is, str[1], str[2]) << std::endl;
 	os.close();
