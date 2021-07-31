@@ -1,27 +1,54 @@
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef FORM_HPP
+# define FORM_HPP
 
 # include <string>
+# include <iostream>
+# include <stdexcept>
 
-class Animal{
+class Bureaucrat;
+
+class Form{
 
 public:
 
-	Animal(void);
-	virtual	~Animal(void);
-	Animal(Animal const & src);
+	Form(std::string const & name, int sign, int exec);
+	Form(Form const & src);
+	virtual	~Form(void);
 
-	virtual Animal &	operator=(Animal const & rhs);
+	Form &	operator=(Form const & rhs);
 
-	virtual void		makeSound(void) const;
-	
-	std::string	getType(void) const;
-	void		setType(std::string str);
+	std::string const	getName(void) const;
+	int 	getGradeToSign(void) const;
+	int 	getGradeToExecute(void) const;
+	bool	getSignature(void) const;
 
-protected:
+	void	beSigned(Bureaucrat const & bureaucrat);
 
-	std::string	type;
+	class GradeTooHighException : public std::exception{
+	public:
+		virtual const char *	what() const throw(){
+			return ("Grade too high");
+		}
+	};
+	class GradeTooLowException : public std::exception{
+	public:
+		virtual const char *	what() const throw(){
+			return ("Grade too low");
+		}
+	};
+
+private:
+
+	Form(void);
+
+	std::string const	_name;
+	int const			_grade_to_sign;
+	int const			_grade_to_execute;
+
+	bool		_signature;
 
 };
+
+std::ostream &	operator<<(std::ostream & o, Form const & rhs);
 
 #endif

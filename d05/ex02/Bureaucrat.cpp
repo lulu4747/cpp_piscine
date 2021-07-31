@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-# include <stdexcept>
+#include <stdexcept>
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(void):_name("Some random"),_grade(150){
@@ -59,6 +59,20 @@ void	Bureaucrat::downgrade(void){
 		throw(GradeTooLowException());
 	this->_grade++;
 	return ;
+}
+
+void	Bureaucrat::signForm(Form & form){
+
+	try{
+		form.beSigned(*this);
+		std::cout << "<" << this->_name << "> signs <" << form.getName() << ">" << std::endl;
+	}
+	catch(std::exception & e){
+		std::cout << "<" << this->_name << "> cannot sign <"
+			<< form.getName() << "> because <"
+			<< e.what() << ">"
+		<< std::endl;
+	}
 }
 
 std::ostream &	operator<<(std::ostream & o, Bureaucrat const & rhs){
