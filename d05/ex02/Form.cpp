@@ -71,10 +71,10 @@ void	Form::beSigned(Bureaucrat const & bureaucrat){
 
 void	Form::execute(Bureaucrat const & executor) const{
 
-	if (this->_grade_to_execute < executor.getGrade())
-		throw (GradeTooLowException());
 	if (this->_signature == false)
 		throw (UnsignedFormException());
+	if (this->_grade_to_execute < executor.getGrade())
+		throw (GradeTooLowException());
 	return ;
 }
 
