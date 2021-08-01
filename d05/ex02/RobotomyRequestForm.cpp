@@ -6,12 +6,12 @@
 #include "RobotomyRequestForm.hpp"
 
 
-RobotomyRequestForm::RobotomyRequestForm(std::string const & name):Form(name, 72, 45){
+RobotomyRequestForm::RobotomyRequestForm(std::string const & target):Form(target, "RobotomyRequestForm", 72, 45){
 
 	return;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src):Form(src.getName(), 72, 45){
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const & src):Form(src.getTarget(), src.getName(), 72, 45){
 
 	*this = src;
 	return;
@@ -28,12 +28,11 @@ RobotomyRequestForm &	RobotomyRequestForm::operator=(RobotomyRequestForm const &
 	return *this;
 }
 
-void	RobotomyRequestForm::execute(Bureaucrat const & bureaucrat, std::string const & target) const{
+void	RobotomyRequestForm::execute(Bureaucrat const & executor) const{
 
-	if (bureaucrat.getGrade() > this->getGradeToExecute())
-		throw (GradeTooLowException());
+	Form::execute(executor);
 
-	std::cout << "* Some drilling noises *" << std::endl << "<" << target << ">";
+	std::cout << "* Some drilling noises *" << std::endl << "<" << this->getTarget() << ">";
 	if (std::rand() % 2)
 		std::cout << " has been robotomized successfully" << std::endl;
 	else

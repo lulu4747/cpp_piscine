@@ -5,12 +5,12 @@
 #include "PresidentialPardonForm.hpp"
 
 
-PresidentialPardonForm::PresidentialPardonForm(std::string const & name):Form(name, 25, 5){
+PresidentialPardonForm::PresidentialPardonForm(std::string const & target):Form(target, "PresidentialPardonForm", 25, 5){
 
 	return;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & src):Form(src.getName(), 25, 5){
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & src):Form(src.getTarget(), src.getName(), 25, 5){
 
 	*this = src;
 	return;
@@ -27,11 +27,10 @@ PresidentialPardonForm &	PresidentialPardonForm::operator=(PresidentialPardonFor
 	return *this;
 }
 
-void	PresidentialPardonForm::execute(Bureaucrat const & bureaucrat, std::string const & target) const{
+void	PresidentialPardonForm::execute(Bureaucrat const & executor) const{
 
-	if (bureaucrat.getGrade() > this->getGradeToExecute())
-		throw (GradeTooLowException());
-	std::cout << "<" << target << "> has been pardoned by Zafod Beeblebrox" << std::endl;
+	Form::execute(executor);
+	std::cout << "<" << this->getTarget() << "> has been pardoned by Zafod Beeblebrox" << std::endl;
 	return ;
 }
 

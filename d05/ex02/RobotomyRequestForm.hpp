@@ -8,13 +8,13 @@ class RobotomyRequestForm : public Form{
 
 public:
 
-	RobotomyRequestForm(std::string const & name);
+	RobotomyRequestForm(std::string const & target);
 	RobotomyRequestForm(RobotomyRequestForm const & src);
 	virtual	~RobotomyRequestForm(void);
 
 	RobotomyRequestForm &	operator=(RobotomyRequestForm const & rhs);
 
-	void	execute(Bureaucrat const & bureaucrat, std::string const & target) const;
+	virtual void	execute(Bureaucrat const & executor) const;
 
 private:
 

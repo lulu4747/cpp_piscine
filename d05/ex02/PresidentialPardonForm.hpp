@@ -8,17 +8,19 @@ class PresidentialPardonForm : public Form{
 
 public:
 
-	PresidentialPardonForm(std::string const & name);
+	PresidentialPardonForm(std::string const & target);
 	PresidentialPardonForm(PresidentialPardonForm const & src);
 	virtual	~PresidentialPardonForm(void);
 
 	PresidentialPardonForm &	operator=(PresidentialPardonForm const & rhs);
 
-	void	execute(Bureaucrat const & bureaucrat, std::string const & target) const;
+	virtual void	execute(Bureaucrat const & executor) const;
 
 private:
 
 	PresidentialPardonForm(void);
+
+	std::string	_target;
 
 };
 

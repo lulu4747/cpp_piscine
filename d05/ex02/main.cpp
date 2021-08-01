@@ -6,7 +6,7 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 
-int main(void) {							//Ajouter proprement execute methods (+ in base form class) en relisant bien le sujet
+int main(void) {
 
 	Bureaucrat Joel("Joel", 1);
 	Form*	test;
@@ -15,38 +15,60 @@ int main(void) {							//Ajouter proprement execute methods (+ in base form clas
 	{
 		if (i == 0){
 			std::cout << "PresidentialPardonForm :" << std::endl;
-			test = new PresidentialPardonForm("test");
+			test = new PresidentialPardonForm("President");
 		}
 		else if (i == 1){
 			std::cout << "RobotomyRequestForm :" << std::endl;
-			test = new RobotomyRequestForm("test");
+			test = new RobotomyRequestForm("Robot");
 		}
 		else{
 			std::cout << "ShrubberyCreationForm :" << std::endl;
-			test = new ShrubberyCreationForm("test");
+			test = new ShrubberyCreationForm("Tree");
 		}
 
-		std::cout << *test << std::endl;
-	
 		Joel = Bureaucrat("Joel", test->getGradeToSign() + 1);
 
-		Joel.signForm(*test);
-		try{
-		test->beSigned(Joel);}
-		catch(const std::exception& e){
-			std::cerr << e.what() << '\n';}
+		for (int j = 0; j < 2; j++)
+		{
+			std::cout << *test << std::endl;
+	
 
-		std::cout << *test << std::endl;
+			Joel.signForm(*test);
+			try
+			{
+				test->beSigned(Joel);
+			}
+			catch(const std::exception & e)
+			{
+				std::cerr << e.what() << std::endl;
+			}
 
-		Joel.upgrade();
+			Joel.executeForm(*test);
+			try
+			{
+				test->execute(Joel);
+			}
+			catch(const std::exception & e)
+			{
+				std::cerr << e.what() << std::endl;
+			}
 
-		Joel.signForm(*test);
-		try{
-		test->beSigned(Joel);}
-		catch(const std::exception& e){
-			std::cerr << e.what() << '\n';}
+			std::cout << *test << std::endl;
 
-		std::cout << *test << std::endl << std::endl << std::endl;
+			Joel.upgrade();
+
+		}
+		Joel = Bureaucrat("Joel", test->getGradeToExecute());
+
+		Joel.executeForm(*test);
+		try
+		{
+			test->execute(Joel);
+		}
+		catch(const std::exception & e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 
 		delete test;
 	}

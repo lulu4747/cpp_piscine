@@ -30,9 +30,11 @@ $(NAME):$(OBJ) $(INC)
 	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 clean:
+	$(RM_DIR) *_shrubbery
 	$(RM_DIR) $(OBJ)
 
 fclean:
+	$(RM_DIR) *_shrubbery
 	$(RM_DIR) $(OBJ)
 	$(RM) $(NAME)
 

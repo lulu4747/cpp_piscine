@@ -6,12 +6,12 @@
 #include "ShrubberyCreationForm.hpp"
 
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const & name):Form(name, 145, 137){
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const & target):Form(target, "ShrubberyCreationForm", 145, 137){
 
 	return;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src):Form(src.getName(), 145, 137){
+ShrubberyCreationForm::ShrubberyCreationForm(ShrubberyCreationForm const & src):Form(src.getTarget(), src.getName(), 145, 137){
 
 	*this = src;
 	return;
@@ -28,12 +28,11 @@ ShrubberyCreationForm &	ShrubberyCreationForm::operator=(ShrubberyCreationForm c
 	return *this;
 }
 
-void	ShrubberyCreationForm::execute(Bureaucrat const & bureaucrat, std::string const & target) const{
+void	ShrubberyCreationForm::execute(Bureaucrat const & executor) const{
 
-	if (bureaucrat.getGrade() > this->getGradeToExecute())
-		throw (GradeTooLowException());
+	Form::execute(executor);
 
-	std::string		tmp(target + "_shrubbery");
+	std::string		tmp(this->getTarget() + "_shrubbery");
 	std::ofstream	os(tmp.c_str());
 
 	os << "             .o00o" << std::endl
