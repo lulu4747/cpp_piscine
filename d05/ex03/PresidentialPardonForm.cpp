@@ -1,39 +1,36 @@
 #include <iostream>
 #include <string>
-#include "Animal.hpp"
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
+#include "PresidentialPardonForm.hpp"
 
-Animal::Animal(void):type(""){
 
-	std::cout << "Animal default constructor called" << std::endl;
-	return ;
-}
-Animal::~Animal(void){
+PresidentialPardonForm::PresidentialPardonForm(std::string const & target):Form(target, "PresidentialPardonForm", 25, 5){
 
-	std::cout << "Animal destructor called" << std::endl;
-	return ;
+	return;
 }
 
-Animal::Animal(Animal const & src){
+PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const & src):Form(src.getTarget(), src.getName(), 25, 5){
 
-	std::cout << "Animal copy constructor called" << std::endl;
 	*this = src;
+	return;
+}
+
+PresidentialPardonForm::~PresidentialPardonForm(void){
+
 	return ;
 }
 
-Animal &	Animal::operator=(Animal const & rhs){
+PresidentialPardonForm &	PresidentialPardonForm::operator=(PresidentialPardonForm const & rhs){
 
-	if (this != &rhs)
-		this->type = rhs.getType();
+	this->Form::operator=(rhs);
 	return *this;
 }
 
-void	Animal::makeSound(void) const{
+void	PresidentialPardonForm::execute(Bureaucrat const & executor) const{
 
-	std::cout << "Animal is ... what is it called again ?" << std::endl;
+	Form::execute(executor);
+	std::cout << "<" << this->getTarget() << "> has been pardoned by Zafod Beeblebrox" << std::endl;
 	return ;
 }
 
-std::string	Animal::getType(void) const{
-
-	return this->type;
-}

@@ -2,6 +2,7 @@
 #include <string>
 #include <stdexcept>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat(std::string const & name, int grade):_name(name),_grade(grade){
 
@@ -68,6 +69,22 @@ void	Bureaucrat::signForm(Form & form){
 			<< e.what() << ">"
 		<< std::endl;
 	}
+}
+
+void	Bureaucrat::executeForm(Form const & form) const{
+
+	try
+	{
+		form.execute(*this);
+		std::cout << "<" << this->_name << "> executes <" << form.getName() << ">" << std::endl;
+	}
+	catch(std::exception & e){
+		std::cout << "<" << this->_name << "> cannot execute <"
+			<< form.getName() << "> because <"
+			<< e.what() << ">"
+		<< std::endl;
+	}
+	return ;
 }
 
 std::ostream &	operator<<(std::ostream & o, Bureaucrat const & rhs){

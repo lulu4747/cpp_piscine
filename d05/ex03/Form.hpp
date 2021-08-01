@@ -11,7 +11,7 @@ class Form{
 
 public:
 
-	Form(std::string const & name, int sign, int exec);
+	Form(std::string const & target, std::string const & name, int sign, int exec);
 	Form(Form const & src);
 	virtual	~Form(void);
 
@@ -21,6 +21,7 @@ public:
 	int 	getGradeToSign(void) const;
 	int 	getGradeToExecute(void) const;
 	bool	getSignature(void) const;
+	std::string	getTarget(void) const;
 
 	void	beSigned(Bureaucrat const & bureaucrat);
 
@@ -36,16 +37,26 @@ public:
 			return ("Grade too low");
 		}
 	};
+	class UnsignedFormException : public std::exception{
+	public:
+		virtual const char *	what() const throw(){
+			return ("Unsigned form");
+		}
+	};
+
+	virtual void	execute(Bureaucrat const & executor) const;
 
 private:
 
 	Form(void);
 
+	std::string			_target;
 	std::string const	_name;
 	int const			_grade_to_sign;
 	int const			_grade_to_execute;
 
 	bool		_signature;
+
 
 };
 

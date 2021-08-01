@@ -1,25 +1,26 @@
-#ifndef ANIMAL_HPP
-# define ANIMAL_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
 # include <string>
+# include "Form.hpp"
 
-class Animal{
+class PresidentialPardonForm : public Form{
 
 public:
 
-	Animal(void);
-	virtual	~Animal(void);
-	Animal(Animal const & src);
+	PresidentialPardonForm(std::string const & target);
+	PresidentialPardonForm(PresidentialPardonForm const & src);
+	virtual	~PresidentialPardonForm(void);
 
-	virtual Animal &	operator=(Animal const & rhs);
+	PresidentialPardonForm &	operator=(PresidentialPardonForm const & rhs);
 
-	virtual void		makeSound(void) const;
-	
-	std::string	getType(void) const;
+	virtual void	execute(Bureaucrat const & executor) const;
 
-protected:
+private:
 
-	std::string	type;
+	PresidentialPardonForm(void);
+
+	std::string	_target;
 
 };
 

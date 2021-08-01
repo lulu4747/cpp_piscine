@@ -4,8 +4,8 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-Form::Form(std::string const & name, int sign, int exec)
-	:_name(name), _grade_to_sign(sign), _grade_to_execute(exec), _signature(false){
+Form::Form(std::string const & target, std::string const & name, int sign, int exec)
+	:_target(target), _name(name), _grade_to_sign(sign), _grade_to_execute(exec), _signature(false){
 
 	if (this->_grade_to_sign <= 0 || this->_grade_to_execute <= 0)
 		throw (GradeTooHighException());
@@ -29,7 +29,10 @@ Form::~Form(void){
 Form &	Form::operator=(Form const & rhs){
 
 	if (this != &rhs)
+	{
 		this->_signature = rhs.getSignature();
+		this->_target = rhs.getTarget();
+	}
 	return *this;
 }
 
@@ -48,6 +51,11 @@ int	Form::getGradeToExecute(void) const{
 	return this->_grade_to_execute;
 }
 
+std::string	Form::getTarget(void) const{
+
+	return this->_target;
+}
+
 bool	Form::getSignature(void) const{
 
 	return this->_signature;
@@ -58,6 +66,15 @@ void	Form::beSigned(Bureaucrat const & bureaucrat){
 	if (bureaucrat.getGrade() > this->_grade_to_sign)
 		throw (GradeTooLowException());
 	this->_signature = true;
+	return ;
+}
+
+void	Form::execute(Bureaucrat const & executor) const{
+
+	if (this->_signature == false)
+		throw (UnsignedFormException());
+	if (this->_grade_to_execute < executor.getGrade())
+		throw (GradeTooLowException());
 	return ;
 }
 

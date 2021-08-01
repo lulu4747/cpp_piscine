@@ -2,23 +2,23 @@
 # define BRAIN_HPP
 
 # include <string>
+# include "Form.hpp"
 
-class Brain{
+class RobotomyRequestForm : public Form{
 
 public:
 
-	Brain(void);
-	Brain(Brain const & src);
-	virtual ~Brain(void);
+	RobotomyRequestForm(std::string const & target);
+	RobotomyRequestForm(RobotomyRequestForm const & src);
+	virtual	~RobotomyRequestForm(void);
 
-	virtual Brain &	operator=(Brain const & rhs);
+	RobotomyRequestForm &	operator=(RobotomyRequestForm const & rhs);
 
-	virtual std::string	getIdea(size_t index) const;
-	virtual void		setIdea(size_t index, std::string str);
+	virtual void	execute(Bureaucrat const & executor) const;
 
 private:
 
-	std::string	_ideas[100];
+	RobotomyRequestForm(void);
 
 };
 

@@ -35,6 +35,8 @@ public:
 		}
 	};
 
+	void	executeForm(Form const & form) const;
+
 private:
 
 	Bureaucrat(void);
