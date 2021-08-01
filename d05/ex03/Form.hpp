@@ -23,8 +23,6 @@ public:
 	bool	getSignature(void) const;
 	std::string	getTarget(void) const;
 
-	void	setTarget(std::string const & target);
-
 	void	beSigned(Bureaucrat const & bureaucrat);
 
 	class GradeTooHighException : public std::exception{

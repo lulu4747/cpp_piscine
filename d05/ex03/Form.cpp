@@ -61,12 +61,6 @@ bool	Form::getSignature(void) const{
 	return this->_signature;
 }
 
-void	Form::setTarget(std::string const & target){
-
-	this->_target = target;
-	return ;
-}
-
 void	Form::beSigned(Bureaucrat const & bureaucrat){
 
 	if (bureaucrat.getGrade() > this->_grade_to_sign)
