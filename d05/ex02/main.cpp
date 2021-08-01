@@ -14,15 +14,18 @@ int main(void) {
 	for (int i = 0; i < 3; i++)
 	{
 		if (i == 0){
-			std::cout << "PresidentialPardonForm :" << std::endl;
+			std::cout << "---------------------------------------------------------------------" << std::endl
+				<< "PresidentialPardonForm :" << std::endl;
 			test = new PresidentialPardonForm("President");
 		}
 		else if (i == 1){
-			std::cout << "RobotomyRequestForm :" << std::endl;
+			std::cout << "---------------------------------------------------------------------" << std::endl
+				<< "RobotomyRequestForm :" << std::endl;
 			test = new RobotomyRequestForm("Robot");
 		}
 		else{
-			std::cout << "ShrubberyCreationForm :" << std::endl;
+			std::cout << "---------------------------------------------------------------------" << std::endl
+				<< "ShrubberyCreationForm :" << std::endl;
 			test = new ShrubberyCreationForm("Tree");
 		}
 
@@ -30,8 +33,8 @@ int main(void) {
 
 		for (int j = 0; j < 2; j++)
 		{
-			std::cout << *test << std::endl;
-	
+
+			std::cout << std::endl << std::endl << *test << Joel << std::endl << std::endl;
 
 			Joel.signForm(*test);
 			try
@@ -53,12 +56,12 @@ int main(void) {
 				std::cerr << e.what() << std::endl;
 			}
 
-			std::cout << *test << std::endl;
-
 			Joel.upgrade();
 
 		}
+
 		Joel = Bureaucrat("Joel", test->getGradeToExecute());
+		std::cout << std::endl << std::endl << *test << Joel << std::endl << std::endl;
 
 		Joel.executeForm(*test);
 		try
