@@ -13,6 +13,8 @@ int main(void) {
 	Intern		slave;
 	Form*		test;
 
+	test = slave.makeForm("false", "nothing");
+
 	for (int i = 0; i < 3; i++)
 	{
 		switch (i)
