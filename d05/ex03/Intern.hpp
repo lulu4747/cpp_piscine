@@ -1,30 +1,35 @@
-#ifndef AMATERIA_HPP
-# define AMATERIA_HPP
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
 # include <string>
+#include "Form.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
-class ICharacter;
-
-class AMateria{
+class Intern{
 
 public:
 
-	AMateria(void);
-	AMateria(AMateria const & src);
-	AMateria(std::string const & type);
-	virtual ~AMateria(void);
+	Intern(void);
+	virtual ~Intern(void);
 
-	AMateria &	operator=(AMateria const & rhs);
+	Form *	makeForm(std::string const & name, std::string const & target);
 
-	std::string const & getType() const;
+private:
 
-	virtual AMateria* clone() const = 0;
-	virtual void use(ICharacter& target);
+	Intern(Intern const & src);
 
-protected:
+	Intern &	operator=(Intern const & rhs);
 
-	std::string	type_;
+	typedef Form* 	(Intern::*ConstructorPointer)(std::string const &);
 
+	std::string			_type[3];
+	ConstructorPointer	_make[3];
+
+	Form*	makePresidentialPardonForm(std::string const & target);
+	Form*	makeRobotomyRequestForm(std::string const & target);
+	Form*	makeShrubberyCreationForm(std::string const & target);
 };
 
 #endif

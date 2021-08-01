@@ -1,38 +1,32 @@
 #include <iostream>
-#include <string>
-#include "Animal.hpp"
-#include "Cat.hpp"
-#include "Dog.hpp"
-#include "WrongAnimal.hpp"
-#include "WrongCat.hpp"
+#include <stdexcept>
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
 
 int main(void) {
-	
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
+	Bureaucrat	Zafod("Zafod", 1);
+	Intern		slave;
+	Form*		test;
 
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
-
-	delete meta;
-	delete j;
-	delete i;
-
-	const WrongAnimal* wmeta = new WrongAnimal();
-	const WrongAnimal* wcat = new WrongCat();
-
-	std::cout << wcat->getType() << " " << std::endl;
-
-	wmeta->makeSound();
-	wcat->makeSound();
-
-	delete wmeta;
-	delete wcat;
-
+	for (int i = 0; i < 3; i++)
+	{
+		switch (i)
+		{
+			case 0 : test = slave.makeForm("PresidentialPardonForm", "someone important");
+				break;
+			case 1 : test = slave.makeForm("RobotomyRequestForm", "slave");
+				break;
+			case 2 : test = slave.makeForm("ShrubberyCreationForm", "here");
+				break;
+		}
+		Zafod.signForm(*test);
+		Zafod.executeForm(*test);
+		delete test;
+	}
 	return 0;
 }

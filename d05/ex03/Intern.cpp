@@ -1,41 +1,52 @@
+#include <iostream>
 #include <string>
-#include "AMateria.hpp"
-#include "ICharacter.hpp"
+#include "Intern.hpp"
+#include "Form.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 
-AMateria::AMateria(void){
+Intern::Intern(void){
+
+	this->_type[0] = "PresidentialPardonForm";
+	this->_make[0] = &Intern::makePresidentialPardonForm;
+	this->_type[1] = "RobotomyRequestForm";
+	this->_make[1] = &Intern::makeRobotomyRequestForm;
+	this->_type[2] = "ShrubberyCreationForm";
+	this->_make[2] = &Intern::makeShrubberyCreationForm;
+	return ;
+}
+
+Intern::~Intern(void){
 
 	return ;
 }
 
-AMateria::AMateria(AMateria const & src){
+Form*	Intern::makeForm(std::string const & name, std::string const & target){
 
-	*this = src;
-	return ;
+	for (int i = 0; i < 3; i++)
+	{
+		if (this->_type[i].compare(name) == 0)
+		{
+			std::cout << "Intern creates <" << name << ">" << std::endl;
+			return (this->*_make[i])(target);
+		}
+	}
+	std::cout << "Intern cannot create <" << name << "> because it is unknown" << std::endl;
+	return NULL;
 }
 
-AMateria::AMateria(std::string const &type):type_(type){
+Form*	Intern::makePresidentialPardonForm(std::string const & target){
 
-	return ;
+	return new PresidentialPardonForm(target);
 }
 
-AMateria::~AMateria(void){
+Form*	Intern::makeRobotomyRequestForm(std::string const & target){
 
-	return ;
+	return new RobotomyRequestForm(target);
 }
 
-AMateria &	AMateria::operator=(AMateria const &rhs){
+Form*	Intern::makeShrubberyCreationForm(std::string const & target){
 
-	(void)rhs;
-	return *this;
-}
-
-std::string const &	AMateria::getType() const{
-
-	return this->type_;
-}
-
-void AMateria::use(ICharacter &target){
-
-	(void)target;
-	return ;
+	return new ShrubberyCreationForm(target);
 }
