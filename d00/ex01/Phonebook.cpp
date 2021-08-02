@@ -69,7 +69,7 @@ void	Phonebook::print(void){
 	}
 	std::cout << std::endl;
 
-	contact	contact;
+	Contact	contact;
 
 	for (size_t i = 0; i < this->_assigned_number; i++)
 	{
@@ -115,7 +115,7 @@ void	Phonebook::search(void){
 	}
 
 	size_t 	i 		= 	str.at(0) - '0';
-	contact	contact =	this->_contact[i - 1];
+	Contact	contact =	this->_contact[i - 1];
 
 	for (size_t j = 0; j < 5; j++)
 	{
