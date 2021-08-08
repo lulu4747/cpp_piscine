@@ -1,9 +1,9 @@
 NAME	= convert
 
-SRCS	= Literal.cpp
+SRCS	= ScalarConverter.cpp
 SRCS	+= main.cpp
 
-INC		= Literal.hpp
+INC		= ScalarConverter.hpp
 
 OBJ		= $(SRCS:.cpp=.o)
 
