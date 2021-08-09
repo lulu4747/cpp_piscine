@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <cstdlib>
+#include <ctime>
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 #include "RobotomyRequestForm.hpp"
@@ -32,6 +33,7 @@ void	RobotomyRequestForm::execute(Bureaucrat const & executor) const{
 
 	Form::execute(executor);
 
+	std::srand(std::time(nullptr));
 	std::cout << "* Some drilling noises *" << std::endl << "<" << this->getTarget() << ">";
 	if (std::rand() % 2)
 		std::cout << " has been robotomized successfully" << std::endl;
