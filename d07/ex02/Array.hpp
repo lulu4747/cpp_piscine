@@ -1,0 +1,55 @@
+template < typename T >
+class Array
+{
+
+public:
+
+	Array(void):_data(NULL),_size(0){};
+	Array(unsigned int n):_data(new T[n]),_size(n){};
+
+	~Array(void){
+
+		if (this->_size)
+			delete[] _data;
+		return ;
+	};
+
+	Array(Array const & src){
+
+		*this = src;
+	};
+
+	Array &	operator=(Array const &rhs){
+
+		if (this != &rhs)
+		{
+			if (this->_size != rhs.size())
+			{
+				delete[] _data;
+				this->_size = rhs.size();
+				this->_data = new T[this->_size];
+			}
+			for (unsigned int i = 0; i < this->_size; i++)
+				this->_data[i] = rhs[i];
+		}
+		return *this;
+	};
+
+	T	operator[](unsigned int index) const{
+
+		if (this->_array == NULL || index < 0 || index >= this->_size)
+			throw std::exception();
+		
+		return this->_array[index];
+	};
+
+	unsigned int	size(void) const{
+
+		return this->_size;
+	};
+
+private:
+
+	T*				_data;
+	unsigned int	_size;
+};
