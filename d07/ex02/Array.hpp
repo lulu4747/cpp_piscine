@@ -4,20 +4,20 @@ class Array
 
 public:
 
-	Array(void):_data(NULL),_size(0){};
-	Array(unsigned int n):_data(new T[n]),_size(n){};
+	Array(void):_data(NULL),_size(0){}
+	Array(unsigned int n):_data(new T[n]),_size(n){}
 
 	~Array(void){
 
 		if (this->_size)
 			delete[] _data;
 		return ;
-	};
+	}
 
-	Array(Array const & src){
+	Array(Array const & src):_data(NULL),_size(0){
 
 		*this = src;
-	};
+	}
 
 	Array &	operator=(Array const &rhs){
 
@@ -33,20 +33,20 @@ public:
 				this->_data[i] = rhs[i];
 		}
 		return *this;
-	};
+	}
 
-	T	operator[](unsigned int index) const{
+	T &	operator[](unsigned int index) const{
 
-		if (this->_array == NULL || index < 0 || index >= this->_size)
+		if (this->_data == NULL || index < 0 || index >= this->_size)
 			throw std::exception();
-		
-		return this->_array[index];
-	};
+
+		return this->_data[index];
+	}
 
 	unsigned int	size(void) const{
 
 		return this->_size;
-	};
+	}
 
 private:
 
