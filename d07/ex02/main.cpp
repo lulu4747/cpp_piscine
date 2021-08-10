@@ -33,25 +33,25 @@ int main( void ){
 	{
 		std::cout << iemptyarray[0];
 	}
-	catch(const std::exception& e)
+	catch(const std::out_of_range& oor)
 	{
-		std::cout << "index was out of range" << std::endl;
+		std::cout << oor.what() << std::endl;
 	}
 	try
 	{
 		std::cout << ifullarray[-1];
 	}
-	catch(const std::exception& e)
+	catch(const std::out_of_range& oor)
 	{
-		std::cout << "index was out of range" << std::endl;
+		std::cout << oor.what() << std::endl;
 	}
 	try
 	{
 		std::cout << ifullarray[11];
 	}
-	catch(const std::exception& e)
+	catch(const std::out_of_range& oor)
 	{
-		std::cout << "index was out of range" << std::endl;
+		std::cout << oor.what() << std::endl;
 	}
 	
 	return 0;

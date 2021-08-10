@@ -1,3 +1,6 @@
+#include <string>
+#include <sstream>
+
 template < typename T >
 class Array
 {
@@ -38,7 +41,7 @@ public:
 	T &	operator[](unsigned int index) const{
 
 		if (this->_data == NULL || index < 0 || index >= this->_size)
-			throw std::exception();
+			throw std::out_of_range("out of range index");
 
 		return this->_data[index];
 	}
