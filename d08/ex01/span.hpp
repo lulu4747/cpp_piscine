@@ -4,10 +4,6 @@
 # include <algorithm>
 # include <vector>
 
-/*
---------Span class definition--------
-*/
-
 class Span{
 
 public :
@@ -24,9 +20,8 @@ public :
 
 	void	addNumber(int n);
 
-	int		max(void);
-	int		min(void);
-	int		sup(int	n);
+	int	shortestSpan(void) const;
+	int	longestSpan(void) const;
 
 private:
 
@@ -37,12 +32,5 @@ private:
 	std::vector<int>	_numbers;
 
 };
-
-/*
---------Subjects prototypes--------
-*/
-
-int	shortestSpan(Span const & span);
-int	longestSpan(Span const & span);
 
 #endif

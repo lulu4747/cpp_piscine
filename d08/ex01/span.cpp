@@ -13,8 +13,9 @@ Span::Span(unsigned int n):_size(n),_allocs(0){
 	return ;
 }
 
-Span::Span(Span const & src):Span(src.getSize()){
+Span::Span(Span const & src):_size(src.getSize()){
 
+	this->_numbers.reserve(this->_size);
 	*this = src;
 	return ;
 }
@@ -54,40 +55,23 @@ std::vector<int>	Span::getNumbers(void) const{
 void	Span::addNumber(int n){
 
 	if (this->_allocs == this->_size)
-			throw std::exception();
+		throw std::exception();
 	this->_numbers.push_back(n);
 	std::sort(this->_numbers.begin(), this->_numbers.end());
+	this->_allocs++;
 	return ;
 }
 
-int		Span::max(void){
+int	Span::shortestSpan(void) const{
 
-	return *std::max_element(this->_numbers.begin(), this->_numbers.end());
+	if (this->_allocs <= 1)
+		return 0;
+	return *(++this->_numbers.begin()) - *this->_numbers.begin();
 }
 
-int		Span::min(void){
+int	Span::longestSpan(void) const{
 
-	return *std::min_element(this->_numbers.begin(), this->_numbers.end());
+	if (this->_allocs <= 1)
+		return 0;
+	return *this->_numbers.rbegin() - *this->_numbers.begin();
 }
-
-int		Span::sup(int n){
-
-	if (this->_size > 1)
-		return *(std::find(this->_numbers.begin(), this->_numbers.end(), n)++);
-	return n;
-}
-
-/*
-----------Non Member Functions----------
-*/
-
-int	shortestSpan(Span & span){
-
-	return span.sup(span.min()) - span.min();
-}
-
-int	longestSpan(Span & span){
-
-	return span.max() - span.min();
-}
-
