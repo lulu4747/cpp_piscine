@@ -1,4 +1,7 @@
-#include <exception>
+#ifdef EASYFIND_HPP
+#include EASYFIND_HPP
+
+# include <exception>
 
 template < typename T >
 int easyfind(T container, int n){
@@ -12,3 +15,5 @@ int easyfind(T container, int n){
 
 	return *it;
 }
+
+#endif

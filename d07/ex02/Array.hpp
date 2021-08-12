@@ -1,5 +1,8 @@
-#include <string>
-#include <sstream>
+#ifndef ARRAY_HPP
+#define ARRAY_HPP
+
+# include <string>
+# include <sstream>
 
 template < typename T >
 class Array
@@ -56,3 +59,5 @@ private:
 	T*				_data;
 	unsigned int	_size;
 };
+
+#endif
