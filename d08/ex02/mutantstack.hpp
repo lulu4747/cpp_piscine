@@ -1,14 +1,37 @@
 #ifndef MUTANTSTACK_HPP
 #define MUTANTSTACK_HPP
 
+# include <deque>
 # include <stack>
+# include <algorithm>
 
-template< typename T >
-class MutantStack : public std::stack<T>{
+template< class T, class Container = std::deque<T> >
+class MutantStack : public std::stack<T, Container>{
 
 public:
 
-	std::iterator
+	MutantStack(void): std::stack<T, Container>(){}
+	MutantStack(MutantStack const & src): std::stack<T, Container>(src){}
+	virtual ~MutantStack(void){}
+
+	MutantStack &	operator=(MutantStack const & rhs){return *this = std::stack<T, Container>::operator=(rhs);}
+
+	typedef	typename Container::iterator		iterator;
+	typedef	typename Container::const_iterator	const_iterator;
+
+	iterator		begin(void){return this->_container.begin();}
+	iterator		end(void){return this->_container.end();}
+	iterator		rbegin(void){return this->_container.rbegin();}
+	iterator		rend(void){return this->_container.rend();}
+	const_iterator	begin(void) const{return this->_container.begin();}
+	const_iterator	end(void) const{return this->_container.end();}
+	const_iterator	rbegin(void) const{return this->_container.rbegin();}
+	const_iterator	rend(void) const{return this->_container.rend();}
+
+private:
+
+	Container		_container;
+
 };
 
 #endif
