@@ -1,9 +1,8 @@
 #ifndef MUTANTSTACK_HPP
-#define MUTANTSTACK_HPP
+# define MUTANTSTACK_HPP
 
 # include <deque>
 # include <stack>
-# include <algorithm>
 
 template< class T, class Container = std::deque<T> >
 class MutantStack : public std::stack<T, Container>{
