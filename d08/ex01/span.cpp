@@ -7,16 +7,9 @@
 ----------Member Functions----------
 */
 
-Span::Span(unsigned int n):_size(n),_allocs(0){
+Span::Span(unsigned int n){
 
 	this->_numbers.reserve(n);
-	return ;
-}
-
-Span::Span(Span const & src):_size(src.getSize()){
-
-	this->_numbers.reserve(this->_size);
-	*this = src;
 	return ;
 }
 
@@ -25,26 +18,14 @@ Span::~Span(void){
 	return ;
 }
 
-Span &	Span::operator=(Span const & rhs){
+unsigned int		Span::size(void) const{
 
-	if (this != &rhs)
-	{
-		if (rhs.getSize() != this->_size)
-			throw std::exception();
-		this->_allocs = rhs.getAllocs();
-		std::copy(rhs.getNumbers().begin(), rhs.getNumbers().end(), this->_numbers.begin());
-	}
-	return *this;
+	return this->_numbers.size();
 }
 
-unsigned int		Span::getSize(void) const{
+unsigned int		Span::capacity(void) const{
 
-	return this->_size;
-}
-
-unsigned int		Span::getAllocs(void) const{
-
-	return this->_allocs;
+	return this->_numbers.capacity();
 }
 
 std::vector<int>	Span::getNumbers(void) const{
@@ -54,24 +35,24 @@ std::vector<int>	Span::getNumbers(void) const{
 
 void	Span::addNumber(int n){
 
-	if (this->_allocs == this->_size)
-		throw std::exception();
+	if (this->size() >= this->capacity())
+		throw FullClassException();
 	this->_numbers.push_back(n);
-	std::sort(this->_numbers.begin(), this->_numbers.end());
-	this->_allocs++;
 	return ;
 }
 
-int	Span::shortestSpan(void) const{
+int	Span::shortestSpan(void){
 
-	if (this->_allocs <= 1)
-		return 0;
+	if (this->size() <= 1)
+		throw ImpossibleSpanException();
+	std::sort(this->_numbers.begin(), this->_numbers.end());
 	return *(++this->_numbers.begin()) - *this->_numbers.begin();
 }
 
-int	Span::longestSpan(void) const{
+int	Span::longestSpan(void){
 
-	if (this->_allocs <= 1)
-		return 0;
+	if (this->size() <= 1)
+		throw ImpossibleSpanException();
+	std::sort(this->_numbers.begin(), this->_numbers.end());
 	return *this->_numbers.rbegin() - *this->_numbers.begin();
 }
