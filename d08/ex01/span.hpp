@@ -2,6 +2,8 @@
 # define SPAN_HPP
 
 # include <stdexcept>
+# include <iterator>
+# include <algorithm>
 # include <vector>
 
 class Span{
@@ -11,11 +13,13 @@ public :
 	Span(unsigned int n);
 	virtual ~Span(void);
 
+	Span(Span const & src);
+	Span &	operator=(Span const & rhs);
+
 	unsigned int		size(void) const;
 	unsigned int		capacity(void) const;
+	unsigned int		getMax(void) const;
 	std::vector<int>	getNumbers(void) const;
-
-	void	addNumber(int n);
 
 	class	FullClassException : public std::exception{
 	public:
@@ -30,16 +34,27 @@ public :
 		}
 	};
 
+	void	addNumber(int n);
+
+	template < class Iterator>
+	void	addNumber(Iterator begin, Iterator end)
+	{
+		if (end - begin > this->_max)
+			throw FullClassException();
+		std::copy(begin, end, std::back_inserter(this->_numbers));
+		return ;
+	};
+
+
 	int	shortestSpan(void);
 	int	longestSpan(void);
 
 private:
 
 	Span(void);
-	Span(Span const & src);
-	Span &	operator=(Span const & rhs);
 
 	std::vector<int>	_numbers;
+	unsigned int		_max;
 
 };
 

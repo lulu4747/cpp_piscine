@@ -18,20 +18,22 @@ public:
 
 	MutantStack &	operator=(MutantStack const & rhs){return *this = std::stack<T, Container>::operator=(rhs);}
 
-	typedef	typename Container::iterator		iterator;
-	typedef	typename Container::const_iterator	const_iterator;
+	typedef	typename Container::iterator				iterator;
+	typedef	typename Container::const_iterator			const_iterator;
+	typedef	typename Container::reverse_iterator		reverse_iterator;
+	typedef	typename Container::const_reverse_iterator	const_reverse_iterator;
 
-	iterator		begin(void){return std::stack<T, Container>::c.begin();}
-	const_iterator	begin(void) const{return std::stack<T, Container>::c.begin();}
+	iterator				begin(void){return std::stack<T, Container>::c.begin();}
+	const_iterator			begin(void) const{return std::stack<T, Container>::c.begin();}
 
-	iterator		end(void){return std::stack<T, Container>::c.end();}
-	const_iterator	end(void) const{return std::stack<T, Container>::c.end();}
+	iterator				end(void){return std::stack<T, Container>::c.end();}
+	const_iterator			end(void) const{return std::stack<T, Container>::c.end();}
 
-	iterator		rbegin(void){return std::stack<T, Container>::c.rbegin();}
-	const_iterator	rbegin(void) const{return std::stack<T, Container>::c.rbegin();}
+	reverse_iterator		rbegin(void){return std::stack<T, Container>::c.rbegin();}
+	const_reverse_iterator	rbegin(void) const{return std::stack<T, Container>::c.rbegin();}
 
-	iterator		rend(void){return std::stack<T, Container>::c.rend();}
-	const_iterator	rend(void) const{return std::stack<T, Container>::c.rend();}
+	reverse_iterator		rend(void){return std::stack<T, Container>::c.rend();}
+	const_reverse_iterator	rend(void) const{return std::stack<T, Container>::c.rend();}
 
 };
 

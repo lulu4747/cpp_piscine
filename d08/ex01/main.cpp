@@ -68,50 +68,62 @@ int main()
 	}
 
 	Span	sp2(10000);
-	std::srand(std::time(nullptr));
 	for (size_t i = 0; i < 10000; i++)
 	{
 		sp2.addNumber(i);
 		std::cout << " | " << i;
 	}
-	/*sp2.addNumber(8);
-	sp2.addNumber(-9);
-	sp2.addNumber(5);
-	sp2.addNumber(0);
-	sp2.addNumber(987);
-	sp2.addNumber(41);
-	sp2.addNumber(66);
-	sp2.addNumber(87);
-	sp2.addNumber(7);
-	sp2.addNumber(-9);*/
+
+	std::cout << std::endl << std::endl << "shortest = " << sp2.shortestSpan() << std::endl;
+	std::cout << "longest = " << sp2.longestSpan() << std::endl << std::endl;
+
+	std::cout << "Generating 10000 random values in a vector and adding them in Span" << std::endl << std::endl;
+
+	std::vector<int>	values(10000, 0);
+	std::srand(std::time(nullptr));
+	for (size_t i = 0; i < 10000; i++)
+	{
+		values[i] = std::rand();
+		std::cout << " | " << values[i];
+	}
+
+	try
+	{
+		sp2.addNumber(values.begin(), values.end());
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << std::endl << std::endl;
+	}
 
 	std::cout << std::endl << std::endl << "shortest = " << sp2.shortestSpan() << std::endl;
 	std::cout << "longest = " << sp2.longestSpan() << std::endl;
+
+	std::cout << std::endl << std::endl << "Copy constructor" << std::endl;
+	Span sp3(sp2);
+
+	std::cout << std::endl << "shortest = " << sp2.shortestSpan() << std::endl;
+	std::cout << "longest = " << sp2.longestSpan() << std::endl;
+
+	std::cout << std::endl << "Assignation operator" << std::endl;
+	sp = sp3;
+
+	std::cout << std::endl << "shortest = " << sp2.shortestSpan() << std::endl;
+	std::cout << "longest = " << sp2.longestSpan() << std::endl;
+
+
+	std::cout << std::endl << std::endl << "Adding 1 value in the vector and attempting addNumber" << std::endl;
+	values.push_back(0);
+
+	try
+	{
+		sp.addNumber(values.begin(), values.end());
+	}
+	catch(const std::exception& e)
+	{
+		std::cout << e.what() << '\n';
+	}
 	
-	for (std::vector<int>::iterator it = sp2.getNumbers().begin(); it < sp2.getNumbers().end(); it++)
-	{
-		*it = std::rand();
-		std::cout << " | " << *it;
-	}
-
-	std::cout << std::endl << std::endl << "shortest = " << sp2.shortestSpan() << std::endl;
-	std::cout << "longest = " << sp2.longestSpan() << std::endl;
-
-
-//	std::cout << std::endl << "Huge :" << std::endl;
-
-//	Span	huge(100000);
-
-/*	huge.getNumbers().insert(huge.getNumbers().end(), std::rand());
-	for (std::vector<int>::iterator	it = huge.getNumbers().begin();  it != huge.getNumbers().end(); it++)
-	{
-		*it = std::rand();
-		std::cout << *it;
-	}
-	std::cout << std::endl;
-	std::cout << huge.shortestSpan() << std::endl;
-	std::cout << huge.longestSpan() << std::endl;*/
-
 	return 0;
 }
 //copy a revoir : add copy exception ou enlever const _size  gerer la memoire pour copier + add test pour 1000 et add assignation par iterateur;
